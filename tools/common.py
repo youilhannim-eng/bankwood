@@ -1,0 +1,94 @@
+# -*- coding: utf-8 -*-
+import json
+SITE="https://bankwood.co.kr"
+TEL1="010-9010-2347"; TEL2="010-2225-6775"
+TODAY="2026-11-13"
+
+GUIDES=[
+ ("choose","서울근교 요양원 고르는 법","방문 전에 확인할 12가지 체크리스트"),
+ ("cost","요양원 비용 · 본인부담금 (2026)","등급별 1일 수가와 월 부담액, 감경 기준"),
+ ("grade","장기요양등급 신청 방법","자격·절차·서류·점수 기준 한눈에"),
+ ("admission","요양원 입소 절차 · 준비물","입소 전 서류, 계약, 면회 확인 사항"),
+ ("vs-hospital","요양원 · 요양병원 · 주야간보호 차이","우리 부모님께 맞는 곳은 어디일까"),
+ ("namyangju","남양주 화도 · 마석 요양원 안내","서울 동부에서 오가기 좋은 위치와 교통"),
+]
+
+def header():
+    return '''<header>
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="은행나무요양원 홈">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 94V58M50 58C20 58 6 34 10 12c18 6 32 8 40 18 8-10 22-12 40-18 4 22-10 46-40 46Z" fill="#F5B800" stroke="#3B3220" stroke-width="5" stroke-linejoin="round"/></svg>
+      은행나무요양원
+    </a>
+    <nav class="menu" aria-label="주요 메뉴">
+      <a href="/#about">소개</a><a href="/#story">은행나무 이야기</a><a href="/#progress">개원 일정</a><a href="/guide/">이용 가이드</a><a href="/#calculator">비용 계산기</a><a href="/#location">오시는 길</a><a href="/#franchise">개원·가맹</a>
+    </nav>
+    <div class="navr">
+      <a class="call" href="tel:010-9010-2347">📞 사전상담</a>
+      <details class="mnav"><summary>메뉴</summary>
+        <div class="panel">
+          <a href="/#about">소개</a><a href="/#story">은행나무 이야기</a><a href="/#progress">개원 일정</a><a href="/#care">돌봄서비스</a><a href="/#admission">입소안내</a>
+          <a href="/#calculator">비용 계산기</a><a href="/#faq">자주 묻는 질문</a><a href="/#location">오시는 길</a>
+          <div class="sep"></div>
+          <a href="/guide/">이용 가이드 전체</a><a href="/guide/cost/">비용 · 본인부담금</a><a href="/guide/grade/">등급 신청</a>
+          <div class="sep"></div>
+          <a href="/#franchise">개원 · 가맹 상담</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>'''
+
+def footer():
+    links=" · ".join(f'<a href="/guide/{s}/">{t}</a>' for s,t,_ in GUIDES)
+    return f'''<footer>
+  <div class="wrap">
+    <p><b>은행나무요양원</b> · 노인요양시설 · 정원 48명 (2027년 1월 준공 예정)</p>
+    <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (상담실장 박규리)</p>
+    <p>요양원 개원·건축·가맹 문의 {TEL2}</p>
+    <p style="margin-top:var(--s3)" class="flinks">{links}</p>
+    <p style="margin-top:var(--s3)">© 2026 은행나무요양원. All rights reserved. · bankwood.co.kr</p>
+  </div>
+</footer>
+<div class="mcall"><a href="tel:010-9010-2347">📞 사전 상담하기</a><a href="/#location">오시는 길</a></div>'''
+
+def head(title,desc,path,og_title=None,extra_ld=None,kw=""):
+    url=SITE+path
+    ld=json.dumps({"@context":"https://schema.org","@graph":extra_ld or []},ensure_ascii=False,indent=1)
+    return f'''<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<meta name="keywords" content="{kw}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="{url}">
+<meta name="geo.region" content="KR-41">
+<meta name="geo.placename" content="남양주시 화도읍 가곡리">
+<meta name="naver-site-verification" content="NAVER_CODE">
+<meta name="google-site-verification" content="GOOGLE_CODE">
+<meta name="msvalidate.01" content="BING_CODE">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="은행나무요양원">
+<meta property="og:title" content="{og_title or title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{url}">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="{SITE}/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F5B800">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{ld}
+</script>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+'''

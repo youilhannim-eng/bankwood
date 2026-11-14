@@ -1,0 +1,371 @@
+/* ── 황금비율 시스템 (φ = 1.618) ──
+   글자: 16 → 20(×1.272=√φ) → 26(×φ) → 42(×φ²) → 68(×φ³)
+   간격: 0.382 / 0.618 / 1 / 1.618 / 2.618 / 4.236 rem
+   레이아웃: 61.8% : 38.2%, 컨테이너 1040px(≈ 643×φ) */
+:root{
+  --phi:1.618;
+  --s1:.382rem; --s2:.618rem; --s3:1rem; --s4:1.618rem; --s5:2.618rem; --s6:4.236rem; --s7:6.854rem;
+  --f0:.875rem; --f1:1rem; --f2:1.272rem; --f3:1.618rem; --f4:2.618rem; --f5:4.236rem;
+  --ink:#2A2416; --ink2:#5E5545; --green:#3B3220; --green2:#8A6A00;
+  --ginkgo:#F5B800; --ginkgo2:#FFE07A; --cream:#FFF8E1; --paper:#FFFDF6; --line:#EFE2BC;
+  --r:10px; --wrap:1040px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Noto Sans KR",system-ui,sans-serif;font-size:var(--f1);line-height:1.618;color:var(--ink);background:var(--paper);word-break:keep-all}
+h1,h2,h3{font-family:"Gowun Batang",serif;line-height:1.3;color:var(--green)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--s4)}
+.skip{position:absolute;left:-999px}.skip:focus{left:var(--s3);top:var(--s3);background:#fff;padding:var(--s2);z-index:99}
+
+/* 헤더 */
+header{position:sticky;top:0;z-index:50;background:rgba(255,253,248,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:4.236rem}
+.logo{display:flex;align-items:center;gap:var(--s2);font-family:"Gowun Batang",serif;font-weight:700;font-size:var(--f2);color:var(--green)}
+.logo svg{width:1.618rem;height:1.618rem}
+.menu{display:flex;gap:var(--s4);font-size:var(--f0);font-weight:500;color:var(--ink2)}
+.menu a:hover{color:var(--green)}
+.call{background:var(--green);color:#fff;padding:var(--s2) var(--s4);border-radius:999px;font-weight:700;font-size:var(--f0);white-space:nowrap}
+
+/* 히어로 61.8 : 38.2 */
+.hero{background:linear-gradient(180deg,var(--cream),var(--paper));padding:var(--s6) 0 var(--s7);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s5);align-items:center}
+.eyebrow{display:inline-block;font-size:var(--f0);font-weight:700;color:var(--green2);background:#FFF0BF;padding:var(--s1) var(--s3);border-radius:999px;margin-bottom:var(--s4)}
+.hero h1{font-size:var(--f5);letter-spacing:-.02em;margin-bottom:var(--s4)}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--ginkgo2) 62%)}
+.hero p.lead{font-size:var(--f2);color:var(--ink2);margin-bottom:var(--s5);max-width:32em}
+.btns{display:flex;gap:var(--s3);flex-wrap:wrap}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:var(--s2);padding:var(--s3) var(--s4);border-radius:var(--r);font-weight:700;font-size:var(--f1)}
+.btn.p{background:var(--ginkgo);color:var(--ink)}
+.btn.s{border:1.5px solid var(--green);color:var(--green)}
+.hero-art{position:relative;aspect-ratio:1/1.618;max-height:26rem;justify-self:center;width:100%}
+.hero-art svg{width:100%;height:100%}
+
+/* 신뢰 지표 */
+.facts{margin-top:calc(var(--s6) * -1);position:relative;z-index:2}
+.facts ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 10px 26px rgba(47,74,58,.08)}
+.facts li{padding:var(--s4);text-align:center;border-right:1px solid var(--line)}
+.facts li:last-child{border-right:0}
+.facts b{display:block;font-family:"Gowun Batang",serif;font-size:var(--f3);color:var(--green)}
+.facts span{font-size:var(--f0);color:var(--ink2)}
+
+/* 섹션 공통 */
+section{padding:var(--s7) 0}
+.sec-head{max-width:38.2rem;margin-bottom:var(--s5)}
+.sec-head small{display:block;font-weight:700;color:var(--ginkgo);letter-spacing:.12em;font-size:var(--f0);margin-bottom:var(--s2)}
+.sec-head h2{font-size:var(--f4);margin-bottom:var(--s3)}
+.sec-head p{color:var(--ink2);font-size:var(--f2)}
+.alt{background:var(--cream)}
+
+/* 소개 61.8:38.2 */
+.about{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s5);align-items:start}
+.about p{margin-bottom:var(--s4);font-size:var(--f2);color:var(--ink2)}
+.about p strong{color:var(--ink)}
+.values{list-style:none;display:grid;gap:var(--s3)}
+.values li{background:#fff;border:1px solid var(--line);border-left:4px solid var(--ginkgo);border-radius:var(--r);padding:var(--s3) var(--s4)}
+.values b{font-family:"Gowun Batang",serif;color:var(--green);font-size:var(--f2)}
+.values p{font-size:var(--f0);color:var(--ink2);margin:0}
+
+/* 서비스 */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s5) var(--s4)}
+.card .ic{width:2.618rem;height:2.618rem;border-radius:50%;background:#FBF0CC;display:grid;place-items:center;margin-bottom:var(--s3);font-size:var(--f2)}
+.card h3{font-size:var(--f2);margin-bottom:var(--s2)}
+.card p{font-size:var(--f0);color:var(--ink2)}
+
+/* 하루 일과 */
+.day{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3)}
+.day li{background:#fff;border-radius:var(--r);padding:var(--s4);border:1px solid var(--line)}
+.day time{display:block;font-weight:700;color:var(--green2);font-size:var(--f0);margin-bottom:var(--s1)}
+.day b{font-size:var(--f1)}
+.note{margin-top:var(--s4);font-size:var(--f0);color:var(--ink2)}
+
+/* 입소안내 */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);counter-reset:st}
+.steps li{position:relative;padding-top:var(--s5)}
+.steps li::before{counter-increment:st;content:counter(st);position:absolute;top:0;left:0;width:2.618rem;height:2.618rem;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:700;font-family:"Gowun Batang",serif;font-size:var(--f2)}
+.steps li{padding-top:calc(2.618rem + var(--s3))}
+.steps b{display:block;font-size:var(--f2);font-family:"Gowun Batang",serif;color:var(--green);margin-bottom:var(--s1)}
+.steps p{font-size:var(--f0);color:var(--ink2)}
+.cost{margin-top:var(--s5);display:grid;grid-template-columns:1fr 1.618fr;gap:var(--s4);background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4)}
+.cost h3{font-size:var(--f3)}
+.cost table{width:100%;border-collapse:collapse;font-size:var(--f0)}
+.cost th,.cost td{text-align:left;padding:var(--s2) var(--s3);border-bottom:1px solid var(--line)}
+.cost th{color:var(--green);width:38.2%}
+
+/* FAQ */
+.faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:var(--s3)}
+.faq summary{cursor:pointer;padding:var(--s4);font-weight:700;font-size:var(--f1);list-style:none;display:flex;justify-content:space-between;gap:var(--s3)}
+.faq summary::after{content:"+";color:var(--ginkgo);font-size:var(--f3);line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 var(--s4) var(--s4);color:var(--ink2)}
+
+/* 오시는 길 */
+.loc{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s4)}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);aspect-ratio:1.618/1;background:#E9EFE6}
+.map iframe{width:100%;height:100%;border:0}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:var(--s2) var(--s4);font-size:var(--f0)}
+.info dt{font-weight:700;color:var(--green)}
+.info dd{color:var(--ink2)}
+.maplinks{display:flex;gap:var(--s2);margin-top:var(--s4);flex-wrap:wrap}
+.maplinks a{font-size:var(--f0);border:1px solid var(--line);background:#fff;padding:var(--s2) var(--s3);border-radius:999px;font-weight:500}
+
+/* CTA */
+.cta{background:var(--green);color:#fff;text-align:center;padding:var(--s6) 0}
+.cta h2{color:#fff;font-size:var(--f4);margin-bottom:var(--s3)}
+.cta p{color:#D9E4DB;margin-bottom:var(--s4);font-size:var(--f2)}
+.cta a.tel{display:inline-block;font-family:"Gowun Batang",serif;font-size:var(--f4);color:var(--ginkgo);font-weight:700}
+
+footer{background:#2A2416;color:#A9B8AD;font-size:var(--f0);padding:var(--s5) 0 var(--s6)}
+footer b{color:#fff}
+footer p{margin-bottom:var(--s1)}
+
+/* 모바일 하단 고정 전화 */
+.mcall{display:none}
+
+/* 태블릿 */
+@media (max-width:900px){
+  .menu{display:none}
+  .hero .wrap,.about,.loc,.cost{grid-template-columns:1fr}
+  .hero-art{max-height:16rem;aspect-ratio:1.618/1;order:-1}
+  .grid3{grid-template-columns:1fr 1fr}
+  .day,.steps{grid-template-columns:1fr 1fr}
+  .facts ul{grid-template-columns:1fr 1fr}
+  .facts li:nth-child(2){border-right:0}
+  .facts li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+/* 모바일 */
+@media (max-width:600px){
+  :root{--f5:2.618rem;--f4:1.618rem;--f3:1.272rem;--f2:1.0625rem}
+  .wrap{padding:0 var(--s3)}
+  section{padding:var(--s6) 0}
+  .hero{padding:var(--s5) 0 var(--s6)}
+  .hero h1{font-size:2.15rem}
+  .btn{flex:1;justify-content:center}
+  .grid3{grid-template-columns:1fr}
+  .day{grid-template-columns:1fr 1fr}
+  .day li{padding:var(--s3)}
+  .hero-art{max-height:10rem}
+  .btn{padding:var(--s3) var(--s3)}
+  .card{display:grid;grid-template-columns:2.618rem 1fr;gap:0 var(--s3)}
+  .card .ic{grid-row:span 2;margin:0}
+  .steps{grid-template-columns:1fr 1fr;gap:var(--s4) var(--s3)}
+  .card{padding:var(--s4)}
+  .call{padding:var(--s1) var(--s3)}
+  .logo{font-size:var(--f1)}
+  .facts li{padding:var(--s3) var(--s2)}
+  .info dl{grid-template-columns:4.5em 1fr}
+  .mcall{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--green);box-shadow:0 -4px 16px rgba(0,0,0,.12)}
+  .mcall a{flex:1.618;text-align:center;padding:var(--s3);color:#fff;font-weight:700}
+  .mcall a+a{flex:1;background:var(--ginkgo);color:var(--ink)}
+  body{padding-bottom:3.4rem}
+}
+
+.badge-open{display:inline-flex;align-items:center;gap:var(--s2);background:var(--green);color:#fff;font-weight:700;font-size:var(--f0);padding:var(--s1) var(--s3);border-radius:999px;margin:0 0 var(--s3)}
+.badge-open i{width:.5rem;height:.5rem;border-radius:50%;background:var(--ginkgo);animation:bl 1.6s infinite}
+@keyframes bl{50%{opacity:.25}}
+.timeline{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3)}
+.timeline li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);border-top:4px solid var(--line)}
+.timeline li.now{border-top-color:var(--ginkgo)}
+.timeline li.done{border-top-color:var(--green2)}
+.timeline small{display:block;font-weight:700;color:var(--green2);font-size:var(--f0)}
+.timeline b{display:block;font-family:"Gowun Batang",serif;font-size:var(--f2);color:var(--green);margin:var(--s1) 0}
+.timeline p{font-size:var(--f0);color:var(--ink2)}
+@media (max-width:900px){.timeline{grid-template-columns:1fr 1fr}}
+
+/* 은행나무 이야기 */
+.story{background:linear-gradient(180deg,#FFF8E2,var(--paper))}
+.story-grid{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s5);align-items:start}
+.story-text p{font-size:var(--f2);color:var(--ink2);margin-bottom:var(--s4)}
+.story-text p strong{color:var(--ink)}
+.quote{font-family:"Gowun Batang",serif;font-size:var(--f3);color:var(--green);border-left:4px solid var(--ginkgo);padding:var(--s2) 0 var(--s2) var(--s4);margin:var(--s5) 0;line-height:1.5}
+.tree-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);text-align:center}
+.tree-card svg{width:100%;max-width:16rem;aspect-ratio:1/1;display:block;margin:0 auto var(--s3)}
+.tree-stats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)}
+.tree-stats li{background:var(--cream);border-radius:var(--r);padding:var(--s3) var(--s2)}
+.tree-stats b{display:block;font-family:"Gowun Batang",serif;font-size:var(--f3);color:var(--green);line-height:1.2}
+.tree-stats span{font-size:var(--f0);color:var(--ink2)}
+.tree-src{font-size:.75rem;color:var(--ink2);margin-top:var(--s3);text-align:left}
+.eras{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s5);position:relative}
+.eras li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);position:relative}
+.eras li:last-child{background:var(--green);border-color:var(--green)}
+.eras li:last-child *{color:#fff}
+.eras small{display:block;font-weight:700;color:var(--ginkgo);font-size:var(--f0)}
+.eras b{display:block;font-family:"Gowun Batang",serif;font-size:var(--f2);color:var(--green);margin:var(--s1) 0}
+.eras p{font-size:var(--f0);color:var(--ink2)}
+@media (max-width:900px){.story-grid{grid-template-columns:1fr}.eras{grid-template-columns:1fr}}
+@media (max-width:600px){.quote{font-size:1.272rem;padding-left:var(--s3)}}
+
+/* 서울 근교 비교표 */
+.compare{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:var(--f0)}
+.compare th,.compare td{padding:var(--s3) var(--s4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{background:var(--cream);color:var(--green);font-family:"Gowun Batang",serif;font-size:var(--f1)}
+.compare thead th:last-child{background:var(--green);color:#fff}
+.compare td:last-child{background:#FFFBEE;font-weight:500;color:var(--ink)}
+.compare tr:last-child td{border-bottom:0}
+.compare td:first-child{color:var(--green);font-weight:700;width:23.6%}
+.drive{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s4)}
+.drive li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);text-align:center}
+.drive b{display:block;font-family:"Gowun Batang",serif;font-size:var(--f3);color:var(--green)}
+.drive span{font-size:var(--f0);color:var(--ink2)}
+/* 체크리스트 */
+.checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.checks li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4) var(--s4) var(--s4) calc(var(--s4) + 1.618rem);position:relative}
+.checks li::before{content:"✓";position:absolute;left:var(--s4);top:var(--s4);width:1.272rem;height:1.272rem;border-radius:50%;background:var(--ginkgo);color:var(--ink);display:grid;place-items:center;font-size:.75rem;font-weight:700}
+.checks b{display:block;color:var(--green);margin-bottom:var(--s1)}
+.checks p{font-size:var(--f0);color:var(--ink2)}
+/* 개원·가맹 상담 */
+.biz{background:#2A2416;color:#D9E4DB}
+.biz .sec-head h2{color:#fff}.biz .sec-head p{color:#B9C8BD}.biz .sec-head small{color:var(--ginkgo)}
+.biz-grid{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s5);align-items:start}
+.biz-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.biz-list li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:var(--s4)}
+.biz-list b{display:block;color:var(--ginkgo);font-family:"Gowun Batang",serif;font-size:var(--f2);margin-bottom:var(--s1)}
+.biz-list p{font-size:var(--f0);color:#C7D3CA}
+.biz-card{background:var(--ginkgo);color:var(--ink);border-radius:var(--r);padding:var(--s5) var(--s4);text-align:center}
+.biz-card small{display:block;font-weight:700;font-size:var(--f0);margin-bottom:var(--s2)}
+.biz-card h3{color:var(--ink);font-size:var(--f3);margin-bottom:var(--s3)}
+.biz-card a.tel{display:block;font-family:"Gowun Batang",serif;font-size:var(--f3);font-weight:700;color:var(--green);margin:var(--s3) 0;white-space:nowrap}
+.biz-card p{font-size:var(--f0)}
+.biz-card .btn{background:var(--green);color:#fff;justify-content:center;width:100%}
+@media (max-width:900px){.biz-grid{grid-template-columns:1fr}.checks{grid-template-columns:1fr}}
+@media (max-width:600px){.biz-list{grid-template-columns:1fr}.drive{grid-template-columns:repeat(3,1fr);gap:var(--s2)}.drive li{padding:var(--s3) var(--s1)}.drive b{font-size:1.0625rem}.drive span{font-size:.75rem;display:block;line-height:1.4}.compare th,.compare td{padding:var(--s2) var(--s3)}.compare td:first-child{width:auto}}
+
+/* ── 브랜드 컬러: 옐로우 (#F5B800) ── */
+.call{background:var(--ginkgo);color:var(--ink)}
+.badge-open{background:var(--ginkgo);color:var(--ink)}
+.badge-open i{background:var(--ink)}
+.eyebrow{color:var(--green2)}
+.sec-head small{color:var(--green2)}
+.btn.s{border-color:var(--ink);color:var(--ink)}
+.steps li::before{background:var(--ginkgo);color:var(--ink)}
+.timeline li.done{border-top-color:var(--green2)}
+.eras small{color:var(--green2)}
+.eras li:last-child{background:var(--ginkgo);border-color:var(--ginkgo)}
+.eras li:last-child *{color:var(--ink)}
+.compare thead th:last-child{background:var(--ginkgo);color:var(--ink)}
+.card .ic{background:#FFF0BF}
+.cta{background:var(--ginkgo);color:var(--ink)}
+.cta h2{color:var(--ink)}
+.cta p{color:#4A3F22}
+.cta a.tel{color:var(--ink)}
+.cta .wrap p[style]{color:var(--ink)!important}
+.biz-card .btn{background:var(--ink);color:var(--ginkgo)}
+.biz-card a.tel{color:var(--ink)}
+footer{background:#2A2416;color:#CFC5AE}
+.mcall{background:var(--ginkgo)}
+.mcall a{color:var(--ink)}
+.mcall a+a{background:var(--ink);color:var(--ginkgo)}
+.logo{color:var(--ink)}
+.facts b,.tree-stats b,.drive b{color:var(--ink)}
+
+/* 큰 제목: 황금비 중간단계 2.618×√φ ≈ 3.33rem */
+@media (min-width:601px){.hero h1{font-size:3.33rem}}
+.menu{gap:var(--s3)}
+@media (max-width:1100px){.menu{display:none}}
+
+/* ── 확장: 모바일 메뉴 · 안내 페이지 · 계산기 ── */
+.mnav{display:none;position:relative}
+.mnav summary{list-style:none;cursor:pointer;font-weight:700;font-size:var(--f0);border:1.5px solid var(--ink);border-radius:999px;padding:var(--s1) var(--s3);white-space:nowrap}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav[open] summary{background:var(--ink);color:var(--ginkgo)}
+.mnav .panel{position:absolute;right:0;top:calc(100% + var(--s2));width:min(17rem,86vw);background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 14px 34px rgba(42,36,22,.16);padding:var(--s2);display:grid}
+.mnav .panel a{padding:var(--s2) var(--s3);border-radius:var(--s2);font-weight:500}
+.mnav .panel a:hover{background:var(--cream)}
+.mnav .panel .sep{height:1px;background:var(--line);margin:var(--s1) 0}
+.navr{display:flex;align-items:center;gap:var(--s2)}
+@media (max-width:1100px){.mnav{display:block}}
+@media (max-width:420px){.logo{font-size:.95rem}.nav .call{display:none}}
+
+.crumbs{font-size:var(--f0);color:var(--ink2);padding:var(--s3) 0}
+.crumbs a{color:var(--green2);font-weight:500}
+.crumbs span{margin:0 var(--s1)}
+.page-hero{background:linear-gradient(180deg,var(--cream),var(--paper));padding:var(--s4) 0 var(--s5);border-bottom:1px solid var(--line)}
+.page-hero h1{font-size:var(--f4);margin:var(--s2) 0 var(--s3);letter-spacing:-.01em;max-width:30em}
+.page-hero .lead{font-size:var(--f2);color:var(--ink2);max-width:38.2rem}
+.page-hero .meta{font-size:var(--f0);color:var(--ink2);margin-top:var(--s3)}
+.page-body{padding:var(--s5) 0 var(--s6)}
+.page-grid{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s5);align-items:start}
+.prose{min-width:0}
+.prose h2{font-size:var(--f3);margin:var(--s5) 0 var(--s3);padding-top:var(--s2);scroll-margin-top:5.5rem}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-size:var(--f2);margin:var(--s4) 0 var(--s2)}
+.prose p{color:var(--ink2);margin-bottom:var(--s3);font-size:1.0625rem}
+.prose p strong,.prose li strong{color:var(--ink)}
+.prose ul,.prose ol{margin:0 0 var(--s4) 1.272rem;color:var(--ink2)}
+.prose li{margin-bottom:var(--s2)}
+.prose a{color:var(--green2);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.callout{background:#FFF6D6;border:1px solid var(--ginkgo2);border-left:5px solid var(--ginkgo);border-radius:var(--r);padding:var(--s3) var(--s4);margin:var(--s4) 0;color:var(--ink)}
+.callout p{margin:0;color:var(--ink)}
+.tbl{overflow-x:auto;margin:var(--s3) 0 var(--s4);border:1px solid var(--line);border-radius:var(--r);background:#fff;-webkit-overflow-scrolling:touch}
+.tbl table{width:100%;border-collapse:collapse;font-size:var(--f0);min-width:30rem}
+.tbl th,.tbl td{padding:var(--s2) var(--s3);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl thead th{background:var(--cream);color:var(--ink);font-family:"Gowun Batang",serif}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl th.n{text-align:right}
+.srcs{font-size:var(--f0);color:var(--ink2);border-top:1px solid var(--line);margin-top:var(--s5);padding-top:var(--s3)}
+.srcs a{color:var(--green2);text-decoration:underline}
+.side{position:sticky;top:5.5rem;display:grid;gap:var(--s3)}
+.toc,.sidecta{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4)}
+.toc b{font-family:"Gowun Batang",serif;font-size:var(--f2);display:block;margin-bottom:var(--s2)}
+.toc ol{margin:0 0 0 1.272rem;font-size:var(--f0);color:var(--ink2)}
+.toc li{margin-bottom:var(--s1)}
+.toc a:hover{color:var(--green2);text-decoration:underline}
+.sidecta{background:var(--ginkgo);border-color:var(--ginkgo)}
+.sidecta small{font-weight:700;font-size:var(--f0)}
+.sidecta h3{font-size:var(--f2);color:var(--ink);margin:var(--s1) 0 var(--s2)}
+.sidecta a.tel{display:block;font-family:"Gowun Batang",serif;font-weight:700;font-size:var(--f3);color:var(--ink);white-space:nowrap}
+.sidecta p{font-size:var(--f0);color:#4A3F22}
+.related{padding:var(--s6) 0;background:var(--cream)}
+.related h2{font-size:var(--f3);margin-bottom:var(--s4)}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+.rel-grid a,.guide-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);transition:transform .15s,box-shadow .15s}
+.rel-grid a:hover,.guide-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(42,36,22,.1)}
+.rel-grid b,.guide-card b{display:block;font-family:"Gowun Batang",serif;font-size:var(--f2);color:var(--ink);margin-bottom:var(--s1)}
+.rel-grid span,.guide-card span{font-size:var(--f0);color:var(--ink2)}
+.guide-card em{display:block;font-style:normal;font-size:var(--f0);font-weight:700;color:var(--green2);margin-top:var(--s2)}
+.grid-guides{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+
+/* 계산기 · 자가체크 · 문자상담 */
+.tool{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);display:grid;grid-template-columns:1fr 1.618fr;gap:var(--s5);align-items:start}
+.tool h3{font-size:var(--f3);margin-bottom:var(--s2)}
+.tool .hint{font-size:var(--f0);color:var(--ink2)}
+.fields{display:grid;gap:var(--s3)}
+.fld label,.fld legend{display:block;font-weight:700;font-size:var(--f0);color:var(--ink);margin-bottom:var(--s1)}
+.fld select,.fld input[type=number],.fld input[type=text],.fld input[type=tel],.fld textarea{width:100%;font:inherit;font-size:1rem;padding:var(--s2) var(--s3);border:1.5px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink);min-height:2.75rem}
+.fld select:focus,.fld input:focus,.fld textarea:focus{outline:3px solid var(--ginkgo2);border-color:var(--ginkgo)}
+.fld fieldset{border:0}
+.opts{display:grid;gap:var(--s2)}
+.opts label{display:flex;gap:var(--s2);align-items:flex-start;font-weight:500;background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:var(--s2) var(--s3);cursor:pointer;margin:0;min-height:2.75rem}
+.opts input{margin-top:.35rem;accent-color:#B38600}
+.result{background:var(--cream);border:1px solid var(--ginkgo2);border-radius:var(--r);padding:var(--s4)}
+.result .big{font-family:"Gowun Batang",serif;font-size:var(--f4);font-weight:700;color:var(--ink);line-height:1.2}
+.result dl{display:grid;grid-template-columns:1fr auto;gap:var(--s1) var(--s3);margin-top:var(--s3);font-size:var(--f0)}
+.result dd{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.result dt{color:var(--ink2)}
+.result .fine{font-size:.8125rem;color:var(--ink2);margin-top:var(--s3)}
+.btn.k{background:var(--ink);color:var(--ginkgo);border:0;cursor:pointer;font-family:inherit}
+.btn.p{border:0;cursor:pointer;font-family:inherit}
+.sms-sec{background:var(--cream)}
+.sms-box{display:grid;grid-template-columns:1fr 1.618fr;gap:var(--s5);align-items:start}
+.sms-box .fields{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:var(--s4)}
+.guide-strip{background:#fff}
+@media (max-width:900px){
+  .page-grid,.tool,.sms-box{grid-template-columns:1fr}
+  .side{position:static;order:-1}
+  .toc ol{columns:1}
+  .rel-grid,.grid-guides{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .rel-grid,.grid-guides{grid-template-columns:1fr}
+  .page-hero h1{font-size:1.618rem}
+  .prose p{font-size:1rem}
+  .tool{padding:var(--s3)}
+  .result .big{font-size:1.618rem}
+}
+:focus-visible{outline:3px solid var(--ginkgo);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.crumbs.wrap{padding-left:var(--s4);padding-right:var(--s4)}
+@media (max-width:600px){.crumbs.wrap{padding-left:var(--s3);padding-right:var(--s3)}}
+@media (max-width:900px){.sidecta{display:none}}
