@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 SITE="https://bankwood.co.kr"
-TEL1="010-9010-2347"; TEL2="010-2225-6775"
+TEL1="010-2109-7717"; TEL2="010-2225-6775"
 TODAY="2026-11-13"
 
 GUIDES=[
@@ -24,7 +24,7 @@ def header():
       <a href="/#about">소개</a><a href="/#story">은행나무 이야기</a><a href="/#progress">개원 일정</a><a href="/guide/">이용 가이드</a><a href="/#calculator">비용 계산기</a><a href="/#location">오시는 길</a><a href="/#franchise">개원·가맹</a>
     </nav>
     <div class="navr">
-      <a class="call" href="tel:010-9010-2347">📞 사전상담</a>
+      <a class="call" href="tel:010-2109-7717">📞 사전상담</a>
       <details class="mnav"><summary>메뉴</summary>
         <div class="panel">
           <a href="/#about">소개</a><a href="/#story">은행나무 이야기</a><a href="/#progress">개원 일정</a><a href="/#care">돌봄서비스</a><a href="/#admission">입소안내</a>
@@ -44,13 +44,13 @@ def footer():
     return f'''<footer>
   <div class="wrap">
     <p><b>은행나무요양원</b> · 노인요양시설 · 정원 49명 (2027년 1월 준공 예정)</p>
-    <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (상담실장 박규리)</p>
+    <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (상담실장 박민경)</p>
     <p>요양원 개원·건축·가맹 문의 {TEL2}</p>
     <p style="margin-top:var(--s3)" class="flinks">{links}</p>
     <p style="margin-top:var(--s3)">© 2026 은행나무요양원. All rights reserved. · bankwood.co.kr</p>
   </div>
 </footer>
-<div class="mcall"><a href="tel:010-9010-2347">📞 사전 상담하기</a><a href="/#location">오시는 길</a></div>'''
+<div class="mcall"><a href="tel:010-2109-7717">📞 사전 상담하기</a><a href="/#location">오시는 길</a></div>'''
 
 def head(title,desc,path,og_title=None,extra_ld=None,kw=""):
     url=SITE+path

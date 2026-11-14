@@ -17,7 +17,7 @@ def strip(h): return re.sub(r"\s+"," ",html.unescape(re.sub(r"<[^>]+>"," ",h))).
 def gtitle(slug): return next(t for s,t,_ in GUIDES if s==slug)
 def gsub(slug): return next(d for s,_,d in GUIDES if s==slug)
 
-SIDECTA=f'''<div class="sidecta"><small>사전 입소상담 접수 중</small><h3>상담실장 박규리</h3><a class="tel" href="tel:{TEL1}">{TEL1}</a><p>2027년 1월 준공 예정 · 정원 49명<br>등급 신청이 처음이어도 괜찮습니다.</p></div>'''
+SIDECTA=f'''<div class="sidecta"><small>사전 입소상담 접수 중</small><h3>상담실장 박민경</h3><a class="tel" href="tel:{TEL1}">{TEL1}</a><p>2027년 1월 준공 예정 · 정원 49명<br>등급 신청이 처음이어도 괜찮습니다.</p></div>'''
 
 def crumbs(items):
     out=[]; 
@@ -117,7 +117,7 @@ def render_post(d,posts):
     faqs=[(f["q"],f["a"]) for f in d["faq"]]
     ld=[art_ld(d["title"],d["description"],path,d["date"],d.get("modified",d["date"])),bc_ld(bc),faq_ld(faqs)]
     h=head(f'{d["title"]} - 은행나무요양원 인사이트',esc(d["description"]),path,extra_ld=ld,kw=", ".join(d.get("keywords",[d["category"]])))
-    cta=f'<div class="callout"><p>요양원 입소와 등급 신청이 궁금하시면 편하게 문의하세요. 상담실장 박규리 <a href="tel:{TEL1}" style="white-space:nowrap">{TEL1}</a> · 은행나무요양원은 2027년 1월 준공 예정이며 사전 입소상담을 받고 있습니다.</p></div>'
+    cta=f'<div class="callout"><p>요양원 입소와 등급 신청이 궁금하시면 편하게 문의하세요. 상담실장 박민경 <a href="tel:{TEL1}" style="white-space:nowrap">{TEL1}</a> · 은행나무요양원은 2027년 1월 준공 예정이며 사전 입소상담을 받고 있습니다.</p></div>'
     body=f'''{crumbs(bc)}
 <section class="page-hero" style="padding-top:0"><div class="wrap"><span class="eyebrow">{esc(d["category"])}</span><h1>{esc(d["title"])}</h1><p class="meta">{d["date"]} · 은행나무요양원 인사이트</p></div></section>
 <div class="page-body"><div class="wrap page-grid"><article class="prose"><div class="callout"><b>핵심 요약</b><ul style="margin:.382rem 0 0 1.272rem">{summ}</ul></div>{wrap_tables(body_h)}{faq_html(faqs)}{srcs}{cta}</article><aside class="side">{toc(secs)}{SIDECTA}</aside></div></div>
