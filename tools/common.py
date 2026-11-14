@@ -43,7 +43,7 @@ def footer():
     links=" · ".join(f'<a href="/guide/{s}/">{t}</a>' for s,t,_ in GUIDES)
     return f'''<footer>
   <div class="wrap">
-    <p><b>은행나무요양원</b> · 노인요양시설 · 정원 48명 (2027년 1월 준공 예정)</p>
+    <p><b>은행나무요양원</b> · 노인요양시설 · 정원 49명 (2027년 1월 준공 예정)</p>
     <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (상담실장 박규리)</p>
     <p>요양원 개원·건축·가맹 문의 {TEL2}</p>
     <p style="margin-top:var(--s3)" class="flinks">{links}</p>

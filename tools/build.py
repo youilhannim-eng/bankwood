@@ -17,7 +17,7 @@ def strip(h): return re.sub(r"\s+"," ",html.unescape(re.sub(r"<[^>]+>"," ",h))).
 def gtitle(slug): return next(t for s,t,_ in GUIDES if s==slug)
 def gsub(slug): return next(d for s,_,d in GUIDES if s==slug)
 
-SIDECTA=f'''<div class="sidecta"><small>사전 입소상담 접수 중</small><h3>상담실장 박규리</h3><a class="tel" href="tel:{TEL1}">{TEL1}</a><p>2027년 1월 준공 예정 · 정원 48명<br>등급 신청이 처음이어도 괜찮습니다.</p></div>'''
+SIDECTA=f'''<div class="sidecta"><small>사전 입소상담 접수 중</small><h3>상담실장 박규리</h3><a class="tel" href="tel:{TEL1}">{TEL1}</a><p>2027년 1월 준공 예정 · 정원 49명<br>등급 신청이 처음이어도 괜찮습니다.</p></div>'''
 
 def crumbs(items):
     out=[]; 
