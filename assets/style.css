@@ -369,3 +369,29 @@ footer{background:#2A2416;color:#CFC5AE}
 .crumbs.wrap{padding-left:var(--s4);padding-right:var(--s4)}
 @media (max-width:600px){.crumbs.wrap{padding-left:var(--s3);padding-right:var(--s3)}}
 @media (max-width:900px){.sidecta{display:none}}
+
+/* 상위 요양원 사이트 분석 반영 */
+.quick{padding:var(--s5) 0 0}
+.q-h{font-size:var(--f3);margin-bottom:var(--s3)}
+.q-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3)}
+.q-grid>div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ginkgo);border-radius:var(--r);padding:var(--s3) var(--s4)}
+.q-grid dt{font-weight:700;margin-bottom:var(--s1)}
+.q-grid dd{font-size:var(--f0);color:var(--ink2)}
+.q-grid a{text-decoration:underline;font-weight:700}
+.trust{padding:var(--s6) 0}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;border-radius:99px;padding:.1rem .6rem;margin-right:.4rem}
+.tag.ok{background:var(--ginkgo2);color:var(--ink)}
+.tag.wait{background:#fff;border:1px dashed var(--green2);color:var(--green2)}
+.visit{margin-top:var(--s4);background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;justify-content:space-between}
+.visit ol{display:flex;gap:var(--s4);list-style:none;flex-wrap:wrap;font-size:var(--f0);color:var(--ink2)}
+.visit li{counter-increment:v}.visit ol{counter-reset:v}
+.visit li:before{content:counter(v);display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--ginkgo);color:var(--ink);font-weight:700;margin-right:.4rem}
+.callbar{display:none}
+@media (max-width:900px){.q-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){
+  .q-grid{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1.618fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(0,0,0,.08);padding-bottom:env(safe-area-inset-bottom)}
+  .callbar a{text-align:center;padding:.9rem .3rem;font-weight:700;font-size:var(--f0)}
+  .callbar a:first-child{background:var(--ginkgo)}
+  body{padding-bottom:3.6rem}
+}
