@@ -171,5 +171,23 @@ def main():
     for s,p in PAGES.items(): render_guide(s,p)
     render_hub(); [render_post(d,posts) for d in posts]; render_insight_index(posts)
     inject_home(posts); write_feeds(posts)
+    stamp_assets(ROOT)
     print(f"OK 안내 {len(PAGES)}쪽 · 인사이트 {len(posts)}편")
+
+# ── 자산 주소에 내용 해시를 붙여, 파일이 바뀌면 방문자 브라우저가 새 파일을 받게 함
+def stamp_assets(root):
+    import hashlib,re,os
+    h={}
+    for n in ("style.css","fx.css","fx.js"):
+        p=os.path.join(root,"assets",n)
+        if os.path.exists(p): h[n]=hashlib.md5(open(p,"rb").read()).hexdigest()[:8]
+    pat=re.compile(r'/assets/(style\.css|fx\.css|fx\.js)(\?v=[0-9a-f]+)?')
+    for d,_,fs in os.walk(root):
+        if "/tools" in d or "/.git" in d or "/content" in d: continue
+        for f in fs:
+            if f.endswith(".html"):
+                p=os.path.join(d,f); s=open(p,encoding="utf-8").read()
+                t=pat.sub(lambda m:"/assets/"+m.group(1)+("?v="+h[m.group(1)] if m.group(1) in h else ""),s)
+                if t!=s: open(p,"w",encoding="utf-8").write(t)
+
 if __name__=="__main__": main()
