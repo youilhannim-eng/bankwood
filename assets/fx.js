@@ -19,23 +19,31 @@
   }
   addEventListener("scroll",onScroll,{passive:true}); onScroll();
 
-  /* 2. 스크롤 등장 */
-  if("IntersectionObserver" in window && !calm){
+  /* 2. 스크롤 등장: 첫 화면은 CSS 애니메이션(항상 끝까지 재생), 아래쪽은 스크롤 위치로 판단 */
+  if(!calm){
     var sel=".sec-head,.card,.facts li,.q-grid>*,.steps li,.visit li,.faq details,.guide-strip a,.post-list>*,.trust table,.story .wrap>*,.cta .wrap>*,.biz .wrap>*,.sms-sec .wrap>*,.loc>*,.about>*,.cost>*";
     var els=$$(sel).filter(function(e){return !e.closest(".hero")&&!e.closest(".fx-panel")});
+    $$(".hero .wrap>div:first-child>*").forEach(function(e,i){e.style.setProperty("--i",i); e.classList.add("fx-enter")});
+    var wait=[];
     els.forEach(function(e){
       var sib=e.parentNode?Array.prototype.indexOf.call(e.parentNode.children,e):0;
-      e.style.setProperty("--i",Math.min(sib,6)); e.setAttribute("data-fx","");
+      e.style.setProperty("--i",Math.min(sib,6));
+      if(e.getBoundingClientRect().top>innerHeight*.92){e.setAttribute("data-fx","");wait.push(e)}
+      else{e.classList.add("fx-enter","in"); if(e.matches(".facts li")) count(e.querySelector("b"))}
     });
-    var heroEls=$$(".hero .wrap>div:first-child>*"); heroEls.forEach(function(e,i){e.style.setProperty("--i",i); e.setAttribute("data-fx","")});
-    setTimeout(function(){heroEls.forEach(function(e){e.classList.add("in")})},60); /* 첫 화면은 관찰자와 무관하게 바로 보이게 */
     root.classList.add("fx");
-    var io=new IntersectionObserver(function(en){
-      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); if(x.target.matches(".facts li")) count(x.target.querySelector("b")); }});
-    },{rootMargin:"0px 0px -8% 0px",threshold:.08});
-    $$("[data-fx]").forEach(function(e){io.observe(e)});
-    /* 안전장치: 3초 뒤에도 화면 안에 숨어 있는 요소는 강제로 보이게 */
-    setTimeout(function(){$$("[data-fx]:not(.in)").forEach(function(e){var r=e.getBoundingClientRect(); if(r.top<innerHeight) e.classList.add("in")})},1500);
+    var rt2=false;
+    function reveal(){
+      rt2=false;
+      wait=wait.filter(function(e){
+        if(e.getBoundingClientRect().top<innerHeight*.92){e.classList.add("in"); if(e.matches(".facts li")) count(e.querySelector("b")); return false}
+        return true;
+      });
+      if(!wait.length){removeEventListener("scroll",onReveal);removeEventListener("resize",onReveal)}
+    }
+    function onReveal(){if(!rt2){rt2=true;setTimeout(reveal,60)}}
+    addEventListener("scroll",onReveal,{passive:true}); addEventListener("resize",onReveal); 
+    addEventListener("beforeprint",function(){wait.forEach(function(e){e.classList.add("in")});wait=[]});
   }
 
   /* 3. 숫자 카운트 (예: 49명, 600년) */

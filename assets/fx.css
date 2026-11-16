@@ -22,6 +22,8 @@ header{transition:box-shadow .382s var(--fx-e),background .382s var(--fx-e)}
 /* 스크롤 등장 (자바스크립트가 켜졌을 때만 숨김 → 검색 로봇은 항상 전체 내용을 봄) */
 .fx [data-fx]{opacity:0;transform:translate3d(0,1.618rem,0);transition:opacity .618s var(--fx-e),transform .618s var(--fx-e);transition-delay:calc(var(--i,0) * 61.8ms)}
 .fx [data-fx].in{opacity:1;transform:none}
+.fx-enter{animation:fx-up .618s var(--fx-e) both;animation-delay:calc(var(--i,0) * 61.8ms)}
+@keyframes fx-up{from{opacity:0;transform:translate3d(0,1.618rem,0)}to{opacity:1;transform:none}}
 
 /* 섹션 제목 밑줄이 그려지는 효과 */
 .sec-head h2{position:relative;display:inline-block}
@@ -83,6 +85,7 @@ header{transition:box-shadow .382s var(--fx-e),background .382s var(--fx-e)}
 @media (prefers-reduced-motion:reduce){
   .hero::before,.hero::after,.hero-art,.btn.p::before,.fx-ask i{animation:none}
   .fx [data-fx]{opacity:1;transform:none;transition:none}
+  .fx-enter{animation:none}
   .fx-canvas{display:none}
   html{scroll-behavior:auto}
 }
