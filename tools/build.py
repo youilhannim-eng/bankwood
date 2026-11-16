@@ -69,7 +69,7 @@ def render_guide(slug,p):
 def render_hub():
     path="/guide/"; bc=[("홈","/"),("이용 가이드",path)]
     cards="".join(f'<a class="guide-card" href="/guide/{s}/"><b>{t}</b><span>{d}</span><em>자세히 보기 →</em></a>' for s,t,d in GUIDES)
-    ld=[{"@type":"CollectionPage","name":"요양원 이용 가이드","url":SITE+path,"inLanguage":"ko-KR"},bc_ld(bc)]
+    ld=[{"@type":"CollectionPage","name":"요양원 이용 가이드","url":SITE+path,"inLanguage":"ko-KR","publisher":ORG,"about":{"@id":SITE+"/#org"}},bc_ld(bc)]
     h=head("요양원 이용 가이드 | 비용·등급 신청·입소 절차·고르는 법 - 은행나무요양원","요양원 비용과 본인부담금, 장기요양등급 신청, 입소 절차와 준비물, 요양원 고르는 법, 요양원·요양병원 차이를 쉽게 정리한 이용 가이드.",path,extra_ld=ld,kw="요양원 가이드, 요양원 비용, 장기요양등급 신청, 요양원 입소 절차, 서울근교 요양원")
     body=f'''{crumbs(bc)}
 <section class="page-hero" style="padding-top:0"><div class="wrap"><h1>요양원 이용 가이드</h1><p class="lead">처음 요양원을 알아보는 가족을 위해 비용, 등급 신청, 입소 준비, 고르는 법을 순서대로 정리했습니다.</p></div></section>

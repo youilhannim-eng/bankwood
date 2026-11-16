@@ -395,3 +395,8 @@ footer{background:#2A2416;color:#CFC5AE}
   .callbar a:first-child{background:var(--ginkgo)}
   body{padding-bottom:3.6rem}
 }
+/* 모바일: 3열 이하 표는 옆으로 밀지 않고 화면 폭에 맞춤 (4열 이상만 가로 스크롤) */
+@media (max-width:600px){
+  .tbl table:not(:has(th:nth-child(4))){min-width:0;table-layout:auto}
+  .tbl table:not(:has(th:nth-child(4))) th,.tbl table:not(:has(th:nth-child(4))) td{padding:var(--s2) .618rem;word-break:keep-all;overflow-wrap:anywhere}
+}
