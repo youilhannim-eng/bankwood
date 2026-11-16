@@ -2,7 +2,7 @@
 import json
 SITE="https://bankwood.co.kr"
 TEL1="010-2109-7717"; TEL2="010-2225-6775"
-TODAY="2026-11-13"
+TODAY="2026-11-17"
 
 GUIDES=[
  ("choose","좋은 노인요양원 고르는 법","방문 전에 확인할 12가지 체크리스트"),
