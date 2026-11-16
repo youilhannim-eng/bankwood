@@ -27,14 +27,15 @@
       var sib=e.parentNode?Array.prototype.indexOf.call(e.parentNode.children,e):0;
       e.style.setProperty("--i",Math.min(sib,6)); e.setAttribute("data-fx","");
     });
-    $$(".hero .wrap>div:first-child>*").forEach(function(e,i){e.style.setProperty("--i",i*2); e.setAttribute("data-fx","")});
+    var heroEls=$$(".hero .wrap>div:first-child>*"); heroEls.forEach(function(e,i){e.style.setProperty("--i",i); e.setAttribute("data-fx","")});
+    setTimeout(function(){heroEls.forEach(function(e){e.classList.add("in")})},60); /* 첫 화면은 관찰자와 무관하게 바로 보이게 */
     root.classList.add("fx");
     var io=new IntersectionObserver(function(en){
       en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); if(x.target.matches(".facts li")) count(x.target.querySelector("b")); }});
     },{rootMargin:"0px 0px -8% 0px",threshold:.08});
     $$("[data-fx]").forEach(function(e){io.observe(e)});
     /* 안전장치: 3초 뒤에도 화면 안에 숨어 있는 요소는 강제로 보이게 */
-    setTimeout(function(){$$("[data-fx]:not(.in)").forEach(function(e){var r=e.getBoundingClientRect(); if(r.top<innerHeight) e.classList.add("in")})},3000);
+    setTimeout(function(){$$("[data-fx]:not(.in)").forEach(function(e){var r=e.getBoundingClientRect(); if(r.top<innerHeight) e.classList.add("in")})},1500);
   }
 
   /* 3. 숫자 카운트 (예: 49명, 600년) */
