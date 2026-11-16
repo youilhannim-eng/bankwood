@@ -42,7 +42,7 @@ def related_html(items,title="함께 보면 좋은 글"):
     return f'<section class="related"><div class="wrap"><h2>{title}</h2><div class="rel-grid">'+"".join(f'<a href="{u}"><b>{esc(t)}</b><span>{esc(d)}</span></a>' for t,d,u in items)+'</div></div></section>'
 
 def page(headhtml,body):
-    return headhtml+header()+'\n<main id="main">\n'+body+'\n</main>\n'+footer()+'\n</body>\n</html>\n'
+    return headhtml+header()+'\n<main id="main">\n'+body+'\n</main>\n'+footer()+'\n<script defer src="/assets/fx.js" data-theme="ginkgo" data-tel="010-2109-7717" data-brand="은행나무요양원"></script>\n</body>\n</html>\n'
 
 # ── 안내 페이지
 def render_guide(slug,p):

@@ -88,6 +88,7 @@ def head(title,desc,path,og_title=None,extra_ld=None,kw=""):
 {ld}
 </script>
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/fx.css">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
