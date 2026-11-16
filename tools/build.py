@@ -9,6 +9,11 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import *
 from guides import PAGES
 ROOT=os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
+ORG={"@type":["NursingHome","LocalBusiness"],"@id":SITE+"/#org","name":"은행나무요양원","url":SITE+"/","telephone":"+82-10-2109-7717",
+ "image":SITE+"/assets/og-image.png","logo":{"@type":"ImageObject","url":SITE+"/assets/og-image.png"},
+ "address":{"@type":"PostalAddress","streetAddress":"화도읍 가곡로 97-22","addressLocality":"남양주시","addressRegion":"경기도","postalCode":"12032","addressCountry":"KR"},
+ "areaServed":["남양주시","구리시","하남시","서울특별시"]}
+
 def W(path,txt):
     p=os.path.join(ROOT,path); os.makedirs(os.path.dirname(p),exist_ok=True)
     open(p,"w",encoding="utf-8").write(txt)
@@ -30,8 +35,7 @@ def faq_ld(faqs):
     return {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faqs]}
 def art_ld(title,desc,path,date,mod):
     return {"@type":"Article","headline":title,"description":desc,"datePublished":date,"dateModified":mod,"inLanguage":"ko-KR",
-     "author":{"@type":"Organization","name":"은행나무요양원","url":SITE+"/"},
-     "publisher":{"@type":"Organization","name":"은행나무요양원","url":SITE+"/","logo":{"@type":"ImageObject","url":SITE+"/assets/og-image.png"}},
+     "author":{"@id":SITE+"/#org"},"publisher":ORG,"about":{"@id":SITE+"/#org"},
      "mainEntityOfPage":SITE+path,"image":SITE+"/assets/og-image.png"}
 def faq_html(faqs):
     return '<h2 id="faq">자주 묻는 질문</h2><div class="faq" style="padding:0">'+"".join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q,a in faqs)+'</div>'
@@ -127,7 +131,7 @@ def render_post(d,posts):
 def render_insight_index(posts):
     path="/insight/"; bc=[("홈","/"),("인사이트",path)]
     cards="".join(f'<a class="guide-card" href="/insight/{d["slug"]}/"><small style="font-weight:700;color:var(--green2)">{esc(d["category"])} · {d["date"]}</small><b>{esc(d["title"])}</b><span>{esc(d["description"])}</span></a>' for d in posts) or "<p>곧 첫 글이 올라옵니다.</p>"
-    ld=[{"@type":"Blog","name":"은행나무요양원 인사이트","url":SITE+path,"inLanguage":"ko-KR","publisher":{"@type":"Organization","name":"은행나무요양원"},
+    ld=[{"@type":"Blog","name":"은행나무요양원 인사이트","url":SITE+path,"inLanguage":"ko-KR","publisher":ORG,
          "blogPost":[{"@type":"BlogPosting","headline":d["title"],"url":SITE+f"/insight/{d['slug']}/","datePublished":d["date"]} for d in posts[:20]]},bc_ld(bc)]
     h=head("인사이트 | 요양원 선택·비용·등급·돌봄 정보 매일 업데이트 - 은행나무요양원","요양원 선택, 비용과 제도, 장기요양등급, 치매 돌봄 정보를 하루 한 편씩 정리하는 은행나무요양원 인사이트.",path,extra_ld=ld,kw="요양원 정보, 요양원 비용, 장기요양등급, 치매 돌봄, 서울근교 요양원")
     body=f'''{crumbs(bc)}
