@@ -400,3 +400,35 @@ footer{background:#2A2416;color:#CFC5AE}
   .tbl table:not(:has(th:nth-child(4))){min-width:0;table-layout:auto}
   .tbl table:not(:has(th:nth-child(4))) th,.tbl table:not(:has(th:nth-child(4))) td{padding:var(--s2) .618rem;word-break:keep-all;overflow-wrap:anywhere}
 }
+
+/* ===== 2026-11-17 디자인 검수: 크게·뚜렷하게·단순하게 ===== */
+/* 보호자 연령대 기준: 기본 글자 17px, 작은 글자도 15px 아래로 내리지 않음 */
+html{font-size:106.25%}
+:root{--f0:.9375rem;--ink2:#4F4636}
+.tree-src,.result .fine,.tag{font-size:.875rem}
+@media (max-width:600px){.drive span{font-size:.875rem}}
+/* 버튼: 누르기 쉬운 높이(황금비 3.236rem ≈ 55px), 강조 버튼은 한 가지 색 */
+.btn{min-height:3.236rem;padding:var(--s2) var(--s4);font-size:1.0625rem;justify-content:center;border-radius:var(--r)}
+.btn.s{border-width:2px;background:#fff}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+/* 의미 없는 그라데이션 제거: 단색 면 */
+.hero,.page-hero{background:var(--cream)}
+.story{background:#FFF8E2}
+/* 그림자는 떠 있는 것(메뉴·하단 상담바)에만. 본문 상자는 선으로 구분 */
+.facts ul{box-shadow:none;border:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);border-radius:0;background:transparent}
+.rel-grid a:hover,.guide-card:hover{transform:none;box-shadow:none;border-color:var(--ink)}
+.rel-grid a,.guide-card{transition:border-color .2s}
+/* 똑같은 둥근 카드 반복 줄이기: 케어 안내는 상자 대신 윗선 있는 단 */
+#care .card{background:none;border:0;border-top:2px solid var(--ink);border-radius:0;padding:var(--s3) 0 var(--s4);display:block}
+#care .card h3{font-size:var(--f2);margin-bottom:var(--s2)}
+#care .card p{color:var(--ink2)}
+/* 한눈에 보기: 상자 4개 대신 질문·답 줄 */
+.q-grid>div{background:none;border:0;border-top:2px solid var(--ginkgo);border-radius:0;padding:var(--s3) var(--s3) var(--s3) 0}
+.q-grid dt{font-family:"Gowun Batang",serif;font-size:var(--f2);color:var(--ink)}
+.q-grid dd{font-size:var(--f1);color:var(--ink2)}
+/* 구역 제목: 장식 라벨 없이 제목과 설명만 */
+.sec-head h2{margin-bottom:var(--s2)}
+/* 하단 상담바 아이콘 */
+.callbar a{display:flex;align-items:center;justify-content:center;gap:.382rem;min-height:3.236rem;font-size:1rem;padding:.382rem .3rem}
+@media (max-width:600px){body{padding-bottom:4.236rem}}
+.callbar svg{flex:none}
