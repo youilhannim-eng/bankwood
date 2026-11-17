@@ -6,63 +6,16 @@
   var root=document.documentElement, calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
   var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
 
-  /* 1. 진행 막대 + 헤더 그림자 */
-  var bar=document.createElement("div"); bar.className="fx-bar"; bar.setAttribute("aria-hidden","true"); document.body.appendChild(bar);
+  /* 1. 헤더 그림자 (스크롤 위치 표시) */
   var tick=false;
-  function onScroll(){
-    if(tick) return; tick=true;
-    requestAnimationFrame(function(){
-      var h=root.scrollHeight-innerHeight, y=scrollY||0;
-      bar.style.transform="scaleX("+(h>0?Math.min(1,y/h):0)+")";
-      root.classList.toggle("fx-scrolled",y>24); tick=false;
-    });
-  }
+  function onScroll(){ if(tick) return; tick=true; requestAnimationFrame(function(){ root.classList.toggle("fx-scrolled",(scrollY||0)>24); tick=false; }); }
   addEventListener("scroll",onScroll,{passive:true}); onScroll();
 
-  /* 2. 스크롤 등장: 첫 화면은 CSS 애니메이션(항상 끝까지 재생), 아래쪽은 스크롤 위치로 판단 */
-  if(!calm){
-    var sel=".sec-head,.card,.facts li,.q-grid>*,.steps li,.visit li,.faq details,.guide-strip a,.post-list>*,.trust table,.story .wrap>*,.cta .wrap>*,.biz .wrap>*,.sms-sec .wrap>*,.loc>*,.about>*,.cost>*";
-    var els=$$(sel).filter(function(e){return !e.closest(".hero")&&!e.closest(".fx-panel")});
-    $$(".hero .wrap>div:first-child>*").forEach(function(e,i){e.style.setProperty("--i",i); e.classList.add("fx-enter")});
-    var wait=[];
-    els.forEach(function(e){
-      var sib=e.parentNode?Array.prototype.indexOf.call(e.parentNode.children,e):0;
-      e.style.setProperty("--i",Math.min(sib,6));
-      if(e.getBoundingClientRect().top>innerHeight*.92){e.setAttribute("data-fx","");wait.push(e)}
-      else{e.classList.add("fx-enter","in"); if(e.matches(".facts li")) count(e.querySelector("b"))}
-    });
-    root.classList.add("fx");
-    var rt2=false;
-    function reveal(){
-      rt2=false;
-      wait=wait.filter(function(e){
-        if(e.getBoundingClientRect().top<innerHeight*.92){e.classList.add("in"); if(e.matches(".facts li")) count(e.querySelector("b")); return false}
-        return true;
-      });
-      if(!wait.length){removeEventListener("scroll",onReveal);removeEventListener("resize",onReveal)}
-    }
-    function onReveal(){if(!rt2){rt2=true;setTimeout(reveal,60)}}
-    addEventListener("scroll",onReveal,{passive:true}); addEventListener("resize",onReveal); 
-    addEventListener("beforeprint",function(){wait.forEach(function(e){e.classList.add("in")});wait=[]});
-  }
-
-  /* 3. 숫자 카운트 (예: 49명, 600년) */
-  function count(b){
-    if(!b||b.dataset.done) return; b.dataset.done=1;
-    var m=b.textContent.match(/^(\D*?)(\d{2,4})(\D*)$/); if(!m||/\./.test(b.textContent)) return;
-    var to=+m[2], t0=performance.now(), d=1000;
-    (function step(t){
-      var p=Math.min(1,(t-t0)/d), v=Math.round(to*(1-Math.pow(1-p,3)));
-      b.textContent=m[1]+v+m[3]; if(p<1) requestAnimationFrame(step);
-    })(t0);
-  }
-
-  /* 4. 카드 위 빛 */
-  if(matchMedia("(hover:hover)").matches){
-    document.addEventListener("pointermove",function(e){
-      var c=e.target.closest&&e.target.closest(".card"); if(!c) return;
-      var r=c.getBoundingClientRect(); c.style.setProperty("--mx",(e.clientX-r.left)+"px"); c.style.setProperty("--my",(e.clientY-r.top)+"px");
-    },{passive:true});
+  /* 2. 움직임은 두 곳만: 입소 절차 경로, 상황별 안내 짚기. 화면에 들어오면 한 번 재생.
+        내용은 처음부터 다 보이고, 움직임은 그 위에 얹는 강조일 뿐이다. */
+  if(!calm && "IntersectionObserver" in window){
+    var once=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("go"); once.unobserve(x.target); } }); },{threshold:.35});
+    $$(".route, .route-steps, .pick").forEach(function(e){ once.observe(e); });
   }
 
   /* 5. 히어로 캔버스: 은행잎 / 금빛 연결선 / 은은한 빛망울 */
@@ -74,7 +27,7 @@
     function size(){W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
     function rnd(a,b){return a+Math.random()*(b-a)}
     function seed(){
-      P=[]; var n= theme==="gold" ? (small?26:58) : theme==="pearl" ? (small?7:12) : (small?9:18);
+      P=[]; var n= theme==="gold" ? (small?26:58) : theme==="pearl" ? (small?7:12) : (small?5:9);
       for(var i=0;i<n;i++){
         if(theme==="gold") P.push({x:rnd(0,W),y:rnd(0,H),vx:rnd(-.18,.18),vy:rnd(-.18,.18),r:rnd(1,2.2)});
         else if(theme==="pearl") P.push({x:rnd(0,W),y:rnd(0,H),vx:rnd(-.1,.1),vy:rnd(-.08,.08),r:rnd(38,110),a:rnd(.05,.12)});

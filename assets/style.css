@@ -432,3 +432,12 @@ html{font-size:106.25%}
 .callbar a{display:flex;align-items:center;justify-content:center;gap:.382rem;min-height:3.236rem;font-size:1rem;padding:.382rem .3rem}
 @media (max-width:600px){body{padding-bottom:4.236rem}}
 .callbar svg{flex:none}
+/* 모바일 첫 화면: 제목 두 줄, 상담 버튼이 첫 화면 안에 들어오게 */
+@media (max-width:600px){
+  .hero{padding-top:var(--s4)}
+  .hero h1{font-size:min(2.15rem,7.8vw);margin-bottom:var(--s3)}
+  .hero-art{max-height:6.854rem}
+  .hero p.lead{font-size:1.0625rem;margin-bottom:var(--s4)}
+  .callbar a{font-size:.9375rem;white-space:nowrap;gap:.236rem}
+  .callbar svg{width:18px;height:18px}
+}
