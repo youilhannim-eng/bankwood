@@ -83,7 +83,7 @@ def load_posts():
     posts=[]
     for f in sorted(glob.glob(os.path.join(ROOT,"content/insight/*.json"))):
         d=json.load(open(f,encoding="utf-8")); d["_file"]=f; posts.append(d)
-    posts.sort(key=lambda d:(d["date"],d["slug"]),reverse=True)
+    posts.sort(key=lambda d:(d["date"],d.get("time","00:00"),d["slug"]),reverse=True)  # 항상 가장 새 글이 맨 앞
     return posts
 def validate(posts):
     errs=[]; slugs=set(); titles=set()

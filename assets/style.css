@@ -441,3 +441,6 @@ html{font-size:106.25%}
   .callbar a{font-size:.9375rem;white-space:nowrap;gap:.236rem}
   .callbar svg{width:18px;height:18px}
 }
+/* 상단 메뉴: 줄바꿈 금지, 좁아지면 '메뉴' 버튼으로 전환 */
+.menu a{white-space:nowrap}
+@media (max-width:1240px){.menu{display:none}.mnav{display:block}}
