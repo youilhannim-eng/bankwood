@@ -11,7 +11,7 @@ from guides import PAGES
 ROOT=os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
 ORG={"@type":["NursingHome","LocalBusiness"],"@id":SITE+"/#org","name":"은행나무요양원","url":SITE+"/","telephone":"+82-10-2109-7717",
  "image":SITE+"/assets/og-image.png","logo":{"@type":"ImageObject","url":SITE+"/assets/og-image.png"},
- "address":{"@type":"PostalAddress","streetAddress":"화도읍 가곡로 97-22","addressLocality":"남양주시","addressRegion":"경기도","postalCode":"12032","addressCountry":"KR"},
+ "address":{"@type":"PostalAddress","streetAddress":"화도읍 가곡로 97-22 (가곡리 256-9)","addressLocality":"남양주시","addressRegion":"경기도","postalCode":"12032","addressCountry":"KR"},
  "areaServed":["남양주시","구리시","하남시","서울특별시"]}
 
 def W(path,txt):
