@@ -444,3 +444,20 @@ html{font-size:106.25%}
 /* 상단 메뉴: 줄바꿈 금지, 좁아지면 '메뉴' 버튼으로 전환 */
 .menu a{white-space:nowrap}
 @media (max-width:1240px){.menu{display:none}.mnav{display:block}}
+
+/* 토르건축: 개원·건축 상담 영역 강조 (여백·크기는 황금비 1.618 단계) */
+.menu a.menu-build{border:1px solid var(--ginkgo);color:var(--ginkgo);border-radius:999px;padding:.382rem 1rem;font-weight:700}
+.menu a.menu-build:hover{background:var(--ginkgo);color:var(--ink)}
+.biz{padding-block:calc(var(--s6,4rem)*1.1)}
+.tb-head{max-width:46rem;margin-bottom:var(--s5)}
+.tb-head h2{color:#fff;font-size:clamp(1.75rem,4.2vw,2.618rem);line-height:1.3;margin:var(--s2) 0 var(--s3)}
+.tb-head p:last-child{color:#B9C8BD}
+.tb-mark{display:inline-flex;align-items:center;gap:.618rem;color:var(--ginkgo);font-family:"Gowun Batang",serif;font-size:1.618rem;letter-spacing:.08em;margin:0;padding-bottom:var(--s2);border-bottom:2px solid var(--ginkgo)}
+.tb-mark b{font-weight:700}
+.ham{width:1.618rem;height:1.618rem}
+.tb-mark-dark{color:var(--ink);border-color:var(--ink);font-size:1.25rem;margin-bottom:var(--s3)}
+.tb-mark-dark .ham{width:1.25rem;height:1.25rem}
+.biz-card .btn-line{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.236rem;margin-top:var(--s2);border:2px solid var(--ink);border-radius:var(--r);color:var(--ink);font-weight:700;background:transparent}
+.biz-card .btn-line:hover{background:var(--ink);color:var(--ginkgo)}
+@media (min-width:901px){.biz-card{position:sticky;top:5.5rem}}
+@media (max-width:900px){.biz-card{order:-1}}

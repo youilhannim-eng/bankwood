@@ -28,7 +28,7 @@ def header():
       은행나무요양원
     </a>
     <nav class="menu" aria-label="주요 메뉴">
-      <a href="/#about">소개</a><a href="/#who">상황별 안내</a><a href="/guide/">이용 가이드</a><a href="/insight/">인사이트</a><a href="/#calculator">비용 계산기</a><a href="/#location">오시는 길</a><a href="/#franchise">개원·가맹</a>
+      <a href="/#about">소개</a><a href="/#who">상황별 안내</a><a href="/guide/">이용 가이드</a><a href="/insight/">인사이트</a><a href="/#calculator">비용 계산기</a><a href="/#location">오시는 길</a><a class="menu-build" href="/#franchise">토르건축 상담</a>
     </nav>
     <div class="navr">
       <a class="call" href="tel:010-2109-7717">사전상담</a>
@@ -39,7 +39,7 @@ def header():
           <div class="sep"></div>
           <a href="/insight/">인사이트 (매일 새 글)</a><a href="/guide/">이용 가이드 전체</a><a href="/guide/cost/">비용 · 본인부담금</a><a href="/guide/grade/">등급 신청</a>
           <div class="sep"></div>
-          <a href="/#franchise">개원 · 가맹 상담</a>
+          <a href="/#franchise">토르건축 · 개원·가맹 상담</a>
         </div>
       </details>
     </div>
@@ -52,7 +52,7 @@ def footer():
   <div class="wrap">
     <p><b>은행나무요양원</b> · 노인요양시설 · 정원 49명 (2027년 1월 준공 예정)</p>
     <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (상담실장 박민경)</p>
-    <p>요양원 개원·건축·가맹 문의 {TEL2}</p>
+    <p>토르건축 · 요양원 개원·건축·가맹 문의 {TEL2} · <a href="https://thorthor.co.kr" target="_blank" rel="noopener">thorthor.co.kr</a></p>
     <p style="margin-top:var(--s3)" class="flinks">{links}</p>
     <p style="margin-top:var(--s3)">© 2026 은행나무요양원. All rights reserved. · bankwood.co.kr</p>
   </div>
