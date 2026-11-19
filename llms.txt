@@ -65,8 +65,14 @@
 - [서울근교 요양원 · 오는 길](https://bankwood.co.kr/guide/near-seoul/): 강동·하남·구리에서 오는 방법
 - [남양주 동네별 안내](https://bankwood.co.kr/guide/namyangju-areas/): 진접·별내·다산·마석에서 오는 길
 - [남양주 요양원 안내](https://bankwood.co.kr/guide/namyangju/): 서울 동부에서 오가기 좋은 위치와 교통
+- [인지지원등급이란](https://bankwood.co.kr/guide/cognitive-support-grade/): 45점 미만 치매 어르신이 받는 등급과 서비스
+- [요양보호사 안내](https://bankwood.co.kr/guide/care-worker/): 하는 일, 교육 320시간, 자격시험
+- [요양원 창업 · 개원 절차](https://bankwood.co.kr/guide/open-nursing-home/): 토르건축 · 설치신고부터 장기요양기관 지정까지
 
 ## 인사이트 (최신순)
+- [요양보호사 교육이 320시간으로 늘면서 무엇이 달라졌나요](https://bankwood.co.kr/insight/care-worker-training-what-changed/): 요양보호사 표준교육과정이 240시간에서 320시간으로 늘었습니다. 늘어난 내용, 시간 구성, 자격 소지자 감면, 보호자가 요양원에서 확인할 점을 정리했습니다.
+- [등급외 판정을 받았다면, 인지지원등급부터 다시 살펴보세요](https://bankwood.co.kr/insight/not-graded-check-cognitive-support/): 장기요양 신청 결과가 등급외로 나왔다면 치매 진단이 있었는지부터 확인해 보세요. 같은 45점 미만이라도 치매 여부에 따라 인지지원등급과 등급외가 갈립니다.
+- [요양원에 치매전담실을 두려면 무엇을 갖춰야 하나요](https://bankwood.co.kr/insight/dementia-unit-requirements/): 요양원 안에 치매전담실을 두려면 일반 생활실과 다른 요건을 맞춰야 합니다. 1실당 정원, 1인당 면적, 전체 입소정원, 1인실 요건을 보건복지부 안내 기준으로 정리했습니다.
 - [요양원 A등급은 어떻게 매겨질까요, 평가등급 확인법과 한계](https://bankwood.co.kr/insight/long-term-care-facility-rating-check/): 국민건강보험공단 장기요양기관 평가는 3년 주기입니다. 평가등급을 확인하는 곳, 평가 영역, 등급만 보고 정하면 놓치는 것과 신설 요양원을 살피는 법을 정리했습니다.
 - [요양원 이름이 된 가곡리 600년 은행나무, 보호수는 어떤 나무일까요](https://bankwood.co.kr/insight/gagok-ginkgo-protected-tree/): 은행나무요양원 이름의 바탕인 남양주 가곡리 600년 은행나무(보호수 제21호)와, 산림보호법상 보호수의 뜻, 요양원 주변 환경을 보는 법을 정리했습니다.
 - [집에서 모시다 며칠 숨 돌려야 할 때, 단기보호와 가족휴가제](https://bankwood.co.kr/insight/short-term-respite-care/): 집에서 어르신을 돌보는 가족이 며칠 쉬어야 할 때 알아볼 수 있는 장기요양 단기보호와 가족휴가제를 소개합니다. 월 9일·연 12일 한도와 2026년 7월 확대 내용을 보건복지부 발표 기준으로 정리했습니다.

@@ -60,10 +60,12 @@ def render_guide(slug,p):
     ld=[art_ld(p["h1"],p["desc"],path,"2026-11-13",TODAY),bc_ld(bc),faq_ld(p["faqs"])]
     h=head(p["title"],esc(p["desc"]),path,extra_ld=ld,kw=p["kw"])
     rel=[(gtitle(s),gsub(s),f"/guide/{s}/") for s in p["rel"]]
+    mine=[d for d in POSTS if d.get("guide")==slug][:6]
+    ins=related_html([(d["title"],d["date"],f"/insight/{d['slug']}/") for d in mine],"이 주제의 인사이트") if mine else ""
     body=f'''{crumbs(bc)}
 <section class="page-hero" style="padding-top:0"><div class="wrap"><h1>{esc(p["h1"])}</h1><p class="lead">{esc(p["lead"])}</p><p class="meta">은행나무요양원 · 최종 확인 {TODAY}</p></div></section>
 <div class="page-body"><div class="wrap page-grid"><article class="prose">{secs}{faq_html(p["faqs"])}{srcs}</article><aside class="side">{toc(p["secs"])}{SIDECTA}</aside></div></div>
-{related_html(rel)}'''
+{ins}{related_html(rel)}'''
     W(f"guide{path[6:]}index.html",page(h,body))
 
 def render_hub():
@@ -168,10 +170,12 @@ def write_feeds(posts):
         full+=f"\n\n## {d['title']}\n{SITE}/insight/{d['slug']}/\n{strip(d['body'])}\n"+"\n".join(f"Q. {f['q']}\nA. {f['a']}" for f in d["faq"])
     W("llms-full.txt",full)
 
+POSTS=[]
 def main():
     posts=load_posts(); errs=validate(posts)
     if errs:
         print("검증 실패:"); [print(" -",e) for e in errs]; sys.exit(1)
+    global POSTS; POSTS=posts
     for s,p in PAGES.items(): render_guide(s,p)
     render_hub(); [render_post(d,posts) for d in posts]; render_insight_index(posts)
     inject_home(posts); write_feeds(posts)
