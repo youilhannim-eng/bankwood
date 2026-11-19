@@ -55,7 +55,7 @@ def footer():
   <div class="wrap">
     <p><b>은행나무요양원</b> · 노인요양시설 · 정원 49명 (2027년 1월 준공 예정)</p>
     <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (상담실장 박민경)</p>
-    <p>토르건축 · 요양원 개원·건축·가맹 문의 {TEL2} · <a href="https://thorthor.co.kr" target="_blank" rel="noopener">thorthor.co.kr</a></p>
+    <p>토르건축 · 요양원 개원·건축·가맹 문의 {TEL2} · <a href="https://thorthor.co.kr/general-construction" target="_blank" rel="noopener">토르건축 홈페이지</a></p>
     <p style="margin-top:var(--s3)" class="flinks">{links}</p>
     <p style="margin-top:var(--s3)">© 2026 은행나무요양원. All rights reserved. · bankwood.co.kr</p>
   </div>
