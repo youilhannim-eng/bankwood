@@ -461,3 +461,9 @@ html{font-size:106.25%}
 .biz-card .btn-line:hover{background:var(--ink);color:var(--ginkgo)}
 @media (min-width:901px){.biz-card{position:sticky;top:5.5rem}}
 @media (max-width:900px){.biz-card{order:-1}}
+
+.agree{display:flex;gap:.618rem;align-items:flex-start;font-size:var(--f0);line-height:1.6;grid-column:1/-1}
+.agree input{width:1.25rem;height:1.25rem;margin-top:.2rem;flex:none}
+.agree small{display:block;color:var(--ink2)}
+#sms textarea{width:100%;font:inherit;padding:.618rem;border:1px solid var(--line,#ccc);border-radius:var(--r);min-height:5.5rem}
+#sms .fld:has(textarea),#s-msg{grid-column:1/-1}
