@@ -435,7 +435,7 @@ PAGES["namyangju-areas"]=dict(
  rel=["namyangju","near-seoul","choose"])
 
 # ───────── 14. 요양원 창업·개원 (토르건축)
-BUILD_CALL='<div class="callout"><p><b>토르건축</b> · 요양원 부지 검토, 설계·시공, 설치신고·지정 준비까지 상담합니다. <a href="tel:010-2225-6775" style="white-space:nowrap">010-2225-6775</a> · <a href="https://thorthor.co.kr/general-construction" target="_blank" rel="noopener">토르건축 홈페이지 ↗</a></p></div>'
+BUILD_CALL='<div class="callout"><p><b>토르건축</b> · 요양원 부지 검토, 설계·시공, 설치신고·지정 준비까지 상담합니다. <a href="tel:010-2225-6775" style="white-space:nowrap">010-2225-6775</a> · <a href="/build/">건축 일지 보기</a> · <a href="https://thorthor.co.kr/general-construction" target="_blank" rel="noopener">토르건축 홈페이지 ↗</a></p></div>'
 PAGES["open-nursing-home"]=dict(
  title="요양원 창업 · 개원 절차 | 설치신고부터 장기요양기관 지정까지 - 토르건축 · 은행나무요양원",
  desc="요양원(노인요양시설)을 창업하려면 건물을 짓거나 고친 뒤 시·군·구에 설치신고를 하고 장기요양기관 지정을 받아야 합니다. 순서, 설치신고 서류, 건축 단계에서 확인할 시설 기준을 정리했습니다.",

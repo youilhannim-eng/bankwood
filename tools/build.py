@@ -68,6 +68,27 @@ def render_guide(slug,p):
 {ins}{related_html(rel)}'''
     W(f"guide{path[6:]}index.html",page(h,body))
 
+def render_build():
+    data=json.load(open(os.path.join(ROOT,"content","build.json"),encoding="utf-8"))
+    path="/build/"; bc=[("홈","/"),("건축 일지",path)]
+    title="요양원 건축 일지 | 부지부터 준공·개원까지 - 토르건축 · 은행나무요양원"
+    desc="은행나무요양원을 짓는 과정을 부지 검토, 설계, 착공, 골조, 마감, 준공, 개원 순서로 기록합니다. 요양원 개원·건축·브랜딩 상담은 토르건축이 맡습니다."
+    n=sum(len(s["photos"]) for s in data["stages"])
+    items=""
+    for i,s in enumerate(data["stages"],1):
+        ph="".join(f'<figure><img src="{esc(p["src"])}" alt="{esc(p.get("alt",s["title"]))}" loading="lazy" decoding="async"><figcaption>{esc(p.get("date",""))} {esc(p.get("alt",""))}</figcaption></figure>' for p in s["photos"])
+        ph=f'<div class="bl-photos">{ph}</div>' if ph else '<p class="bl-wait">사진을 준비하고 있습니다.</p>'
+        st=f'<span class="bl-st">{esc(s["status"])}</span>' if s.get("status") else ""
+        items+=f'<li id="{s["id"]}"><div class="bl-n">{i:02d}</div><div><h2>{esc(s["title"])}{st}</h2><p>{esc(s["what"])}</p>{ph}</div></li>'
+    ld=[art_ld("요양원 건축 일지",desc,path,"2026-11-22",TODAY),bc_ld(bc)]
+    h=head(title,esc(desc),path,extra_ld=ld,kw="요양원 건축, 요양원 신축, 요양원 개원, 요양원 브랜딩, 요양원 창업, 토르건축")
+    body=f'''{crumbs(bc)}
+<section class="page-hero" style="padding-top:0"><div class="wrap"><span class="eyebrow">토르건축 · 은행나무요양원</span><h1>요양원 한 채가 지어지기까지</h1><p class="lead">남양주 화도읍에 짓고 있는 은행나무요양원의 건축 과정을 단계별로 기록합니다. 사진은 공사가 진행되는 대로 올립니다.</p><p class="meta">정원 49명 · 2027년 1월 준공 예정 · 최종 확인 {TODAY}</p></div></section>
+<div class="page-body"><div class="wrap"><ol class="bl">{items}</ol>
+<div class="bl-cta"><div><h2>요양원 개원을 준비하고 계신가요</h2><p>부지 검토부터 설계·시공, 설치신고와 지정 준비, 이름과 브랜드까지 토르건축이 상담합니다.</p></div><div class="btns"><a class="btn p" href="tel:010-2225-6775">토르건축 상담 010-2225-6775</a><a class="btn s" href="/guide/open-nursing-home/">개원 절차 보기</a><a class="btn s" href="https://thorthor.co.kr/general-construction" target="_blank" rel="noopener">토르건축 홈페이지 ↗</a></div></div>
+</div></div>'''
+    W("build/index.html",page(h,body))
+
 def render_hub():
     path="/guide/"; bc=[("홈","/"),("이용 가이드",path)]
     cards="".join(f'<a class="guide-card" href="/guide/{s}/"><b>{t}</b><span>{d}</span><em>자세히 보기 →</em></a>' for s,t,d in GUIDES)
@@ -151,7 +172,7 @@ def inject_home(posts):
     if s2!=s: open(p,"w",encoding="utf-8").write(s2)
 
 def write_feeds(posts):
-    urls=[("/",TODAY,"1.0"),("/guide/",TODAY,"0.8"),("/insight/",posts[0]["date"] if posts else TODAY,"0.8")]
+    urls=[("/",TODAY,"1.0"),("/build/",TODAY,"0.8"),("/guide/",TODAY,"0.8"),("/insight/",posts[0]["date"] if posts else TODAY,"0.8")]
     urls+=[(f"/guide/{s}/",TODAY,"0.8") for s,_,_ in GUIDES]
     urls+=[(f"/insight/{d['slug']}/",d.get("modified",d["date"]),"0.6") for d in posts]
     x='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"<url><loc>{SITE}{u}</loc><lastmod>{m}</lastmod><priority>{pr}</priority></url>\n" for u,m,pr in urls)+"</urlset>\n"
@@ -177,6 +198,7 @@ def main():
         print("검증 실패:"); [print(" -",e) for e in errs]; sys.exit(1)
     global POSTS; POSTS=posts
     for s,p in PAGES.items(): render_guide(s,p)
+    render_build()
     render_hub(); [render_post(d,posts) for d in posts]; render_insight_index(posts)
     inject_home(posts); write_feeds(posts)
     stamp_assets(ROOT)
