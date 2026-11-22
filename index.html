@@ -373,7 +373,7 @@
 
 <section class="sms-sec" id="consult">
   <div class="wrap">
-    <div class="sec-head"><h2>사전 상담 신청</h2><p>네 칸이면 됩니다. 입소를 결정하지 않으셔도 괜찮습니다. 버튼을 누르면 문자 앱에 내용이 입력되고, 전송하시면 상담실장이 확인 후 연락드립니다.</p></div>
+    <div class="sec-head"><h2>사전 상담 신청</h2><p>네 칸이면 됩니다. 입소를 결정하지 않으셔도 괜찮습니다. 신청하시면 상담실장이 확인 후 연락드립니다.</p></div>
     <div class="sms-box">
       <form class="fields" id="sms" onsubmit="return false">
         <div class="fld"><label for="s-name">보호자 성함</label><input id="s-name" type="text" autocomplete="name"></div>
@@ -381,9 +381,13 @@
         <div class="fld"><label for="s-grade">어르신 등급</label><select id="s-grade"><option>등급 없음 · 신청 예정</option><option>1등급</option><option>2등급</option><option>3등급</option><option>4등급</option><option>5등급</option><option>인지지원등급</option><option>모름</option></select></div>
         <div class="fld"><label for="s-when">입소 희망 시기</label><select id="s-when"><option>2027년 1월 개원 직후</option><option>2027년 상반기</option><option>시기 미정</option></select></div>
         <div class="fld"><label for="s-memo">궁금한 점 (선택)</label><textarea id="s-memo" rows="3" maxlength="500" placeholder="어르신 상태, 궁금한 점 등"></textarea></div>
-        <button class="btn p" id="s-go" type="button">문자로 상담 신청</button>
+        <input type="text" id="s-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <label class="agree"><input type="checkbox" id="s-agree"><span>상담을 위한 개인정보(성함·연락처) 수집·이용에 동의합니다. <small>수집 목적: 입소 상담 연락 · 보유 기간: 상담 종료 후 1년 · 동의하지 않으면 전화(010-2109-7717)로 상담하실 수 있습니다.</small></span></label>
+        <button class="btn p" id="s-send" type="button">상담 신청하기</button>
+        <button class="btn s" id="s-go" type="button">문자로 보내기</button>
+        <p id="s-msg" role="status" aria-live="polite" style="font-weight:700;margin:0"></p>
       </form>
-      <div><p style="color:var(--ink2);font-size:var(--f2)">문자 앱이 열리지 않으면 <a href="tel:010-2109-7717" style="font-weight:700;text-decoration:underline;white-space:nowrap">010-2109-7717</a>로 전화 주세요.</p><p class="note">입력하신 내용은 이 홈페이지에 저장되지 않고, 문자 앱으로만 전달됩니다.</p></div>
+      <div><p style="color:var(--ink2);font-size:var(--f2)">문자 앱이 열리지 않으면 <a href="tel:010-2109-7717" style="font-weight:700;text-decoration:underline;white-space:nowrap">010-2109-7717</a>로 전화 주세요.</p><p class="note">신청 내용은 이 홈페이지에 저장되지 않고 상담 담당 메일로만 전달됩니다. 문자로 보내기를 누르면 문자 앱으로 전달됩니다.</p></div>
     </div>
   </div>
 </section>
@@ -409,6 +413,20 @@
   }
   chk.addEventListener("change",check);
   function body(){return "보호자: "+($("s-name").value||"")+"\n연락처: "+($("s-tel").value||"")+"\n어르신 등급: "+$("s-grade").value+"\n희망 시기: "+$("s-when").value+($("s-memo").value?"\n궁금한 점: "+$("s-memo").value:"")}
+  $("s-send").addEventListener("click",function(){
+    var msg=$("s-msg"), btn=this, tel=($("s-tel").value||"").replace(/[^0-9]/g,"");
+    if(!$("s-name").value.trim()||tel.length<9){msg.textContent="성함과 연락처를 입력해 주세요.";return}
+    if(!$("s-agree").checked){msg.textContent="개인정보 수집·이용에 동의해 주세요.";return}
+    if($("s-hp").value){return}
+    btn.disabled=true; msg.textContent="보내는 중입니다…";
+    fetch("https://formsubmit.co/ajax/rbfl02022@gmail.com",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({_subject:"[은행나무요양원] 사전 상담 신청 - "+$("s-name").value,_template:"table","보호자 성함":$("s-name").value,"연락처":$("s-tel").value,"어르신 등급":$("s-grade").value,"입소 희망 시기":$("s-when").value,"궁금한 점":$("s-memo").value||"-","신청 페이지":location.href})})
+    .then(function(r){return r.json()}).then(function(j){
+      if(j&&(j.success===true||j.success==="true")){msg.textContent="신청되었습니다. 상담실장이 확인 후 연락드리겠습니다.";$("sms").reset()}
+      else{throw 0}
+    }).catch(function(){msg.textContent="전송이 되지 않았습니다. 문자로 보내기 또는 010-2109-7717로 연락 주세요."})
+    .finally(function(){btn.disabled=false});
+  });
   $("s-go").addEventListener("click",function(){
     location.href="sms:01021097717?&body="+encodeURIComponent("[은행나무요양원 사전상담]\n"+body());
   });
