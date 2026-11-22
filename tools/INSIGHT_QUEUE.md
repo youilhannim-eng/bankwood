@@ -1,12 +1,11 @@
 # 인사이트 키워드 대기열
 
-대기 69 · 완료 14 · 보류 17
+대기 68 · 완료 15 · 보류 17
 
 ## 대기 (위에서부터 한 편씩)
 
 | 키워드 | 월 검색량 | 붙일 안내 페이지 |
 |---|---|---|
-| 요양등급신청방법 | 3,760 | grade |
 | 노인요양원 | 2,970 | choose |
 | 방문요양 | 2,840 | home-care |
 | 요양원요양병원차이 | 1,600 | vs-hospital |
@@ -88,6 +87,7 @@
 | 실버타운 | 10,700 | silver-town-health-decline-stay |
 | 장기요양보험 | 10,540 | long-term-care-2027-changes |
 | 장기요양등급신청 | 9,920 | ltc-grade-apply-by-family |
+| 요양등급신청방법 | 3,760 | ltc-four-kinds-of-application |
 | 요양원비용 | 3,410 | who-pays-long-term-care |
 | 요양원등급 | 2,220 | long-term-care-facility-rating-check |
 | 치매요양원 | 1,130 | dementia-unit-requirements |
