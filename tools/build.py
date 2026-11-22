@@ -10,7 +10,7 @@ from common import *
 from guides import PAGES
 ROOT=os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
 ORG={"@type":["NursingHome","LocalBusiness"],"@id":SITE+"/#org","name":"은행나무요양원","url":SITE+"/","telephone":"+82-10-2109-7717",
- "image":SITE+"/assets/og-image.png","logo":{"@type":"ImageObject","url":SITE+"/assets/og-image.png"},
+ "image":SITE+"/assets/og-image.jpg","logo":{"@type":"ImageObject","url":SITE+"/assets/og-image.jpg"},
  "address":{"@type":"PostalAddress","streetAddress":"화도읍 가곡로 97-22 (가곡리 256-9)","addressLocality":"남양주시","addressRegion":"경기도","postalCode":"12032","addressCountry":"KR"},
  "areaServed":["남양주시","구리시","하남시","서울특별시"]}
 
@@ -36,7 +36,7 @@ def faq_ld(faqs):
 def art_ld(title,desc,path,date,mod):
     return {"@type":"Article","headline":title,"description":desc,"datePublished":date,"dateModified":mod,"inLanguage":"ko-KR",
      "author":{"@id":SITE+"/#org"},"publisher":ORG,"about":{"@id":SITE+"/#org"},
-     "mainEntityOfPage":SITE+path,"image":SITE+"/assets/og-image.png"}
+     "mainEntityOfPage":SITE+path,"image":SITE+"/assets/og-image.jpg"}
 def faq_html(faqs):
     return '<h2 id="faq">자주 묻는 질문</h2><div class="faq" style="padding:0">'+"".join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q,a in faqs)+'</div>'
 def toc(secs,has_faq=True):

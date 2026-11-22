@@ -85,7 +85,7 @@ def head(title,desc,path,og_title=None,extra_ld=None,kw=""):
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="{SITE}/assets/og-image.png">
+<meta property="og:image" content="{SITE}/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F5B800">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
