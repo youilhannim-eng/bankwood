@@ -467,3 +467,33 @@ html{font-size:106.25%}
 .agree small{display:block;color:var(--ink2)}
 #sms textarea{width:100%;font:inherit;padding:.618rem;border:1px solid var(--line,#ccc);border-radius:var(--r);min-height:5.5rem}
 #sms .fld:has(textarea),#s-msg{grid-column:1/-1}
+
+/* ── 다듬기 B안(종이·아치) 2026-11-22: 색 3(잉크·은행노랑·종이), 글꼴 2, 버튼은 알약형, 비율은 1:1.618 단계 ── */
+:root{--wrap:1200px}
+.btn,.btn.p,.btn.s,.btn.k{border-radius:999px;padding-inline:var(--s4)}
+.hero{background:var(--paper);padding:var(--s5) 0 0}
+.hero .wrap{grid-template-columns:1.618fr 1fr;gap:var(--s6);align-items:end}
+.hero .wrap>div:first-child{padding-bottom:var(--s5)}
+.eyebrow{background:none;border-radius:0;padding:0 0 var(--s1);border-bottom:2px solid var(--ginkgo);color:var(--ink);margin-bottom:var(--s4)}
+.hero h1{font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.236;margin-bottom:var(--s4)}
+.hero p.lead{max-width:30em}
+.hero .btn.p{background:var(--ink);color:var(--cream)}
+.hero-arch{position:relative;height:30rem;border-radius:999px 999px 0 0;background:var(--ginkgo);overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.hero-arch svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-arch span{position:relative;background:var(--ink);color:var(--cream);font-size:.875rem;font-weight:700;padding:var(--s1) var(--s3);border-radius:999px;margin-bottom:var(--s4)}
+.facts{margin-top:0}
+.facts ul{border-top:2px solid var(--ink);border-bottom:0}
+.facts li{text-align:left;border-right:0;padding:var(--s4) 0 var(--s5)}
+.page-hero{background:var(--paper)}
+.sec-head h2{letter-spacing:-.01em}
+@media (min-width:901px){.sec-head h2{font-size:calc(var(--f4)*1.1)}}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:var(--s4)}
+  .hero .wrap>div:first-child{padding-bottom:var(--s4)}
+  .hero-arch{order:-1;height:13rem;border-radius:13rem 13rem 0 0}
+  .hero .btns{flex-direction:column}
+  .facts ul{grid-template-columns:1fr 1fr}
+  .facts li{padding:var(--s3) 0}
+}
+.sec-head{max-width:46rem}
+@media (max-width:900px){.hero h1{font-size:min(1.9rem,7.6vw)}.hero-arch{height:10.5rem;border-radius:10.5rem 10.5rem 0 0}.hero-arch span{margin-bottom:var(--s2);font-size:.8125rem}.hero-arch svg{height:118%;top:auto;bottom:-22%}}
