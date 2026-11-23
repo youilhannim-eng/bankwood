@@ -61,7 +61,6 @@ def footer():
     <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (상담실장 박민경)</p>
     <p><a href="/build/">건축 일지</a> · 토르건축 · 요양원 개원·건축·가맹 문의 {TEL2} · <a href="https://thorthor.co.kr/general-construction" target="_blank" rel="noopener">토르건축 홈페이지</a></p>
     <p style="margin-top:var(--s3)" class="flinks">{links}</p>
-    <p style="margin-top:var(--s3)">누리집의 일부 사진은 이해를 돕기 위해 만든 연출 이미지(AI 생성)이며, 실제 건물·어르신 사진이 아닙니다. 실제 사진은 준비되는 대로 바꿔 올립니다.</p>
     <p style="margin-top:var(--s3)">© 2026 은행나무요양원. All rights reserved. · bankwood.co.kr</p>
   </div>
 </footer>
