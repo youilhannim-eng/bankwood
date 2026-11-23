@@ -153,13 +153,22 @@ def render_post(d,posts):
 
 def render_insight_index(posts):
     path="/insight/"; bc=[("홈","/"),("인사이트",path)]
-    cards="".join(f'<a class="guide-card" href="/insight/{d["slug"]}/"><small style="font-weight:700;color:var(--green2)">{esc(d["category"])} · {d["date"]}</small><b>{esc(d["title"])}</b><span>{esc(d["description"])}</span></a>' for d in posts) or "<p>곧 첫 글이 올라옵니다.</p>"
+    def card(d,cat=True):
+        top=(esc(d["category"])+" · " if cat else "")+d["date"]
+        return f'<a class="guide-card" href="/insight/{d["slug"]}/"><small style="font-weight:700;color:var(--green2)">{top}</small><b>{esc(d["title"])}</b><span>{esc(d["description"])}</span></a>'
+    ORDER=["요양원 선택","비용·제도","등급·입소 절차","치매·돌봄","지역·생활","요양원 개원·운영"]
+    cats=[c for c in ORDER if any(d["category"]==c for d in posts)]+sorted({d["category"] for d in posts}-set(ORDER))
+    by={c:[d for d in posts if d["category"]==c] for c in cats}
+    chips='<nav class="cat-nav" aria-label="주제별 보기"><a href="#latest">최신 글</a>'+"".join(f'<a href="#cat-{n}">{esc(c)} <i>{len(by[c])}</i></a>' for n,c in enumerate(cats,1))+'</nav>'
+    cards=chips+f'<section class="cat-sec" id="latest"><h2>최신 글</h2><div class="grid-guides">{"".join(card(d) for d in posts[:3])}</div></section>'
+    cards+="".join(f'<section class="cat-sec" id="cat-{n}"><h2>{esc(c)} <i>{len(by[c])}편</i></h2><div class="grid-guides">{"".join(card(d,False) for d in by[c])}</div></section>' for n,c in enumerate(cats,1))
+    if not posts: cards="<p>곧 첫 글이 올라옵니다.</p>"
     ld=[{"@type":"Blog","name":"은행나무요양원 인사이트","url":SITE+path,"inLanguage":"ko-KR","publisher":ORG,
          "blogPost":[{"@type":"BlogPosting","headline":d["title"],"url":SITE+f"/insight/{d['slug']}/","datePublished":d["date"]} for d in posts[:20]]},bc_ld(bc)]
     h=head("인사이트 | 요양원 선택·비용·등급·돌봄 정보 매일 업데이트 - 은행나무요양원","요양원 선택, 비용과 제도, 장기요양등급, 치매 돌봄 정보를 하루 한 편씩 정리하는 은행나무요양원 인사이트.",path,extra_ld=ld,kw="요양원 정보, 요양원 비용, 장기요양등급, 치매 돌봄, 서울근교 요양원")
     body=f'''{crumbs(bc)}
 <section class="page-hero" style="padding-top:0"><div class="wrap"><h1>인사이트</h1><p class="lead">요양원을 알아보는 가족에게 도움이 되는 정보를 하루 한 편씩 정리합니다. 제도와 금액은 공식 자료를 확인해 적습니다.</p><p class="meta"><a href="/rss.xml" style="text-decoration:underline">RSS 구독</a></p></div></section>
-<div class="page-body"><div class="wrap"><div class="grid-guides">{cards}</div></div></div>'''
+<div class="page-body"><div class="wrap">{cards}</div></div>'''
     W("insight/index.html",page(h,body))
 
 def inject_home(posts):
