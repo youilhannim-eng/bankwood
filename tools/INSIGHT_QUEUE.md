@@ -1,12 +1,11 @@
 # 인사이트 키워드 대기열
 
-대기 66 · 완료 17 · 보류 17
+대기 65 · 완료 18 · 보류 17
 
 ## 대기 (위에서부터 한 편씩)
 
 | 키워드 | 월 검색량 | 붙일 안내 페이지 |
 |---|---|---|
-| 요양원요양병원차이 | 1,600 | vs-hospital |
 | 주야간보호센터 | 1,560 | home-care |
 | 치매등급 | 1,470 | dementia |
 | 서울요양원 | 1,420 | seoul-nursing-home |
@@ -90,6 +89,7 @@
 | 노인요양원 | 2,970 | elderly-nursing-home-legal-name-standards |
 | 방문요양 | 2,840 | home-visit-care-what-and-cost |
 | 요양원등급 | 2,220 | long-term-care-facility-rating-check |
+| 요양원요양병원차이 | 1,600 | hospital-to-nursing-home-when-to-move |
 | 치매요양원 | 1,130 | dementia-unit-requirements |
 | 인지지원등급 | 1,000 | not-graded-check-cognitive-support |
 | 요양원입소 | 320 | before-admission-family-talk |
