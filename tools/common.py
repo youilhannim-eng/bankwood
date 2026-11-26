@@ -31,7 +31,7 @@ def header():
     return '''<header>
   <div class="wrap nav">
     <a class="logo" href="/" aria-label="은행나무요양원 홈">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 94V58M50 58C20 58 6 34 10 12c18 6 32 8 40 18 8-10 22-12 40-18 4 22-10 46-40 46Z" fill="#F5B800" stroke="#3B3220" stroke-width="5" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><g transform="rotate(-26 50 56)"><path d="M50 64C43 55 25 43 7 34C11 24 21 16 33 13C37 12 41 13 44 12C46 11.5 48 13 49.5 16C50.5 13 52 11.5 55 12C59 13 62 12 67 13C79 16 89 24 93 34C75 43 57 55 50 64Z" fill="#CFA53A" stroke="#EFD58A" stroke-width="2" stroke-linejoin="round"/><path d="M50 64C50.5 73 54 83 61 91" fill="none" stroke="#CFA53A" stroke-width="3" stroke-linecap="round"/><path d="M50 62L28 26M50 62L42 18M50 62L58 18M50 62L72 26" stroke="#B88F27" stroke-width=".9" opacity=".55"/></g></svg>
       은행나무요양원
     </a>
     <nav class="menu" aria-label="주요 메뉴">

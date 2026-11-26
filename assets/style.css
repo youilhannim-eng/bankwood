@@ -541,3 +541,6 @@ html{font-size:106.25%}
 #tbf textarea{min-height:5.5rem}
 #tbf .btn{justify-self:start}
 @media (max-width:900px){.tb-form{grid-template-columns:1fr;padding:var(--s4);gap:var(--s3);border-radius:var(--s3)}#tbf{grid-template-columns:1fr}.tb-form-head h3{font-size:1.25rem}#tbf .btn{justify-self:stretch;text-align:center}}
+/* 실제 은행나무 사진: 모바일 짧은 아치에서는 나무 윗부분이 보이게 */
+.hero-arch img{object-position:50% 50%}
+@media (max-width:900px){.hero-arch img{object-position:50% 22%}}

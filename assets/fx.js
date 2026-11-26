@@ -34,11 +34,13 @@
         else P.push({x:rnd(0,W),y:rnd(-H,H),vy:rnd(.25,.7),sw:rnd(.4,1.2),ph:rnd(0,6.28),r:rnd(7,15),rot:rnd(0,6.28),vr:rnd(-.012,.012),a:rnd(.35,.8)});
       }
     }
-    function leaf(p){ /* 부채꼴 은행잎 */
-      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.rot); cx.globalAlpha=p.a; var r=p.r;
-      cx.beginPath(); cx.moveTo(0,r*1.1); cx.bezierCurveTo(-r*1.5,r*.2,-r*1.2,-r,-r*.12,-r*.62); cx.lineTo(0,-r*.3); cx.lineTo(r*.12,-r*.62); cx.bezierCurveTo(r*1.2,-r,r*1.5,r*.2,0,r*1.1); cx.closePath();
-      cx.fillStyle="#F5B800"; cx.fill(); cx.strokeStyle="rgba(138,106,0,.5)"; cx.lineWidth=1; cx.stroke();
-      cx.beginPath(); cx.moveTo(0,r*1.1); cx.lineTo(0,r*1.9); cx.stroke(); cx.restore();
+    var LP=window.Path2D?new Path2D("M50 64C43 55 25 43 7 34C11 24 21 16 33 13C37 12 41 13 44 12C46 11.5 48 13 49.5 16C50.5 13 52 11.5 55 12C59 13 62 12 67 13C79 16 89 24 93 34C75 43 57 55 50 64Z"):null,
+        LS=window.Path2D?new Path2D("M50 64C50.5 73 54 83 61 91"):null;
+    function leaf(p){ /* 명함 금박 은행잎과 같은 부채꼴 */
+      if(!LP)return;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.rot); cx.globalAlpha=p.a; var k=p.r/26; cx.scale(k,k); cx.translate(-50,-52);
+      cx.fillStyle="#D4A93A"; cx.fill(LP); cx.strokeStyle="rgba(239,213,138,.9)"; cx.lineWidth=2; cx.stroke(LP);
+      cx.strokeStyle="#D4A93A"; cx.lineWidth=3; cx.lineCap="round"; cx.stroke(LS); cx.restore();
     }
     function draw(t){
       cx.clearRect(0,0,W,H);
