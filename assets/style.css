@@ -562,3 +562,39 @@ html{font-size:106.25%}
 .gal img{display:block;width:100%;height:auto;aspect-ratio:1.618/1;object-fit:cover;transition:transform .4s}
 .gal a:hover img{transform:scale(1.04)}
 @media (max-width:900px){.gal{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:61.8%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--s2);scrollbar-width:thin}.gal li{scroll-snap-align:start}}
+
+/* ===== 첫 화면: 실제 은행나무 사진을 배경으로 크게 ===== */
+.hero.hero-bg{position:relative;isolation:isolate;padding:var(--s6) 0;min-height:min(88vh,52rem);display:flex;align-items:center;background:#2A2416;overflow:hidden}
+.hero-back{position:absolute;inset:0;z-index:-1}
+.hero-back img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:blur(18px) saturate(1.25) brightness(.62);transform:scale(1.12)}
+.hero-back::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,21,10,.78) 0%,rgba(26,21,10,.45) 61.8%,rgba(26,21,10,.15) 100%)}
+.hero.hero-bg .wrap{width:100%;display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s6);align-items:center}
+.hero.hero-bg .wrap>div:first-child{padding-bottom:0}
+.hero.hero-bg h1,.hero.hero-bg .eyebrow{color:#FFFDF6}
+.hero.hero-bg h1 em{color:#F5B800;background:none}
+.hero.hero-bg p.lead{color:rgba(255,253,246,.88)}
+.hero.hero-bg .eyebrow{border-color:#F5B800}
+.hero.hero-bg .btn.p{background:#F5B800;color:#2A2416}
+.hero.hero-bg .btn.s{background:transparent;color:#FFFDF6;border-color:rgba(255,253,246,.8)}
+.hero-photo{position:relative;margin:0;justify-self:end;width:100%;max-width:26rem}
+.hero-photo img{display:block;width:100%;height:auto;max-height:76vh;object-fit:contain;border-radius:var(--s3);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.hero-photo figcaption{position:absolute;left:50%;bottom:var(--s3);transform:translateX(-50%);white-space:nowrap;background:rgba(42,36,22,.85);color:#FFFDF6;font-size:.875rem;font-weight:700;padding:var(--s1) var(--s3);border-radius:999px}
+@media (max-width:900px){
+  .hero.hero-bg{min-height:calc(100svh - 3.5rem);align-items:flex-end;padding:0 0 var(--s5)}
+  .hero-back img{filter:saturate(1.15);transform:none;object-position:50% 30%}
+  .hero-back::after{background:linear-gradient(180deg,rgba(26,21,10,0) 30%,rgba(26,21,10,.55) 55%,rgba(26,21,10,.88) 100%)}
+  .hero.hero-bg .wrap{grid-template-columns:1fr;gap:0}
+  .hero-photo{position:absolute;top:var(--s3);right:var(--s3);width:auto;max-width:none}
+  .hero-photo img{display:none}
+  .hero-photo figcaption{position:static;transform:none;font-size:.8125rem}
+}
+/* 600년 은행나무: 나무 전체가 보이는 사진 세 장 */
+.tree-trio{display:grid;grid-template-columns:1.618fr 1fr 1fr;gap:var(--s3);margin:0 0 var(--s5)}
+.tree-trio figure{margin:0;overflow:hidden;border-radius:var(--s3)}
+.tree-trio img{display:block;width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 35%}
+.tree-trio figure:first-child img{aspect-ratio:auto}
+@media (max-width:900px){.tree-trio{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory}.tree-trio figure{scroll-snap-align:start}.tree-trio figure:first-child img{aspect-ratio:3/4}}
+.tree-trio{grid-template-columns:repeat(3,1fr)}
+.tree-trio figure:first-child img{aspect-ratio:3/4}
+@media (max-width:900px){.hero.hero-bg .wrap{position:static}.hero-photo{top:calc(var(--s3) + 3.5rem)}}
+@media (max-width:900px){.hero-photo{top:var(--s3)}}
