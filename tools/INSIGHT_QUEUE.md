@@ -1,12 +1,11 @@
 # 인사이트 키워드 대기열
 
-대기 62 · 완료 21 · 보류 17
+대기 61 · 완료 22 · 보류 17
 
 ## 대기 (위에서부터 한 편씩)
 
 | 키워드 | 월 검색량 | 붙일 안내 페이지 |
 |---|---|---|
-| 요양원입소조건 | 1,360 | admission |
 | 남양주요양원 | 900 | namyangju |
 | 강동구요양원 | 900 | gangdong-songpa |
 | 노인요양시설 | 840 | ltc-insurance |
@@ -90,6 +89,7 @@
 | 주야간보호센터 | 1,560 | day-care-center-daily-routine-cost |
 | 치매등급 | 1,470 | dementia-grade-assessment-prep |
 | 서울요양원 | 1,420 | seoul-good-care-certified-nursing-home |
+| 요양원입소조건 | 1,360 | grade3-5-facility-admission-conditions |
 | 치매요양원 | 1,130 | dementia-unit-requirements |
 | 인지지원등급 | 1,000 | dementia-grade-assessment-prep |
 | 요양원입소 | 320 | before-admission-family-talk |
