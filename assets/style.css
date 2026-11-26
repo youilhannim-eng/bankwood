@@ -544,3 +544,11 @@ html{font-size:106.25%}
 /* 실제 은행나무 사진: 모바일 짧은 아치에서는 나무 윗부분이 보이게 */
 .hero-arch img{object-position:50% 50%}
 @media (max-width:900px){.hero-arch img{object-position:50% 22%}}
+/* 실제 사진: 은행나무 카드 · 글 속 사진 */
+.tree-card .tree-photo{display:block;width:100%;max-width:16rem;aspect-ratio:1/1;object-fit:cover;border-radius:50%;margin:0 auto var(--s3)}
+.post-photo{margin:var(--s4) 0;max-width:30rem}
+.post-photo img{display:block;width:100%;height:auto;border-radius:var(--s3)}
+.post-photo figcaption{font-size:.875rem;color:var(--ink2);margin-top:var(--s2)}
+@media (max-width:900px){.post-photo{max-width:none}}
+.tree-card .tree-photo{height:auto}
+.post-photo.wide{max-width:none}

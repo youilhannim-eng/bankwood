@@ -101,7 +101,7 @@ def render_hub():
     W("guide/index.html",page(h,body))
 
 # ── 인사이트
-ALLOWED=set("h2 h3 p ul ol li strong em a br table thead tbody tr th td blockquote".split())
+ALLOWED=set("h2 h3 p ul ol li strong em a br table thead tbody tr th td blockquote figure img figcaption".split())
 def load_posts():
     posts=[]
     for f in sorted(glob.glob(os.path.join(ROOT,"content/insight/*.json"))):
@@ -124,6 +124,10 @@ def validate(posts):
         if not 3<=len(d["faq"])<=5: errs.append(f"{n}: FAQ 3~5개")
         tags=set(re.findall(r"</?([a-z0-9]+)",d["body"]))
         if tags-ALLOWED: errs.append(f"{n}: 허용되지 않은 태그 {tags-ALLOWED}")
+        for src in re.findall(r'<img[^>]*\ssrc="([^"]*)"',d["body"]):
+            if not src.startswith("/assets/img/") or not os.path.exists(os.path.join(ROOT,src.lstrip("/"))): errs.append(f"{n}: 사진은 /assets/img/ 안의 실제 파일만 ({src})")
+        for im in re.findall(r"<img[^>]*>",d["body"]):
+            if 'alt="' not in im: errs.append(f"{n}: 사진 alt 필요")
         if not (60<=len(d["description"])<=160): errs.append(f"{n}: description 60~160자 ({len(d['description'])})")
     return errs
 def wrap_tables(b): return re.sub(r"(<table.*?</table>)",r'<div class="tbl">\1</div>',b,flags=re.S)

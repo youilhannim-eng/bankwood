@@ -7,7 +7,7 @@
 
 ## JSON 형식 (기존 파일 참고)
 slug(영문 소문자·숫자·하이픈), guide(이 글을 붙일 안내 페이지 slug: choose cost grade admission vs-hospital dementia silvertown home-care ltc-insurance grade-compare near-seoul namyangju-areas namyangju cognitive-support-grade care-worker open-nursing-home 중 하나), title, description(60~160자), date, category, keywords[], summary[3줄], body(HTML), faq[{q,a}] 3~5개, sources[{title,url}].
-- body 허용 태그: h2 h3 p ul ol li strong em a br table thead tbody tr th td blockquote. 본문 공백 제외 1,500자 이상(권장 2,000자). h1·스크립트·이미지 금지.
+- body 허용 태그: h2 h3 p ul ol li strong em a br table thead tbody tr th td blockquote. 본문 공백 제외 1,500자 이상(권장 2,000자). h1·스크립트 금지. 사진은 <figure class="post-photo"><img src="/assets/img/실제파일" alt="…" width height loading="lazy"><figcaption>…</figcaption></figure> 형식으로 실제 사진만(AI 사진 금지).
 - 소제목(h2)은 질문형·상황형. '정리'·번호 나열형 남발 금지. 글 끝 상담 문구는 템플릿이 붙이므로 쓰지 않는다.
 - 표는 모바일에서 넘치지 않게 3열 이하·짧은 문구.
 - 내부 링크는 /guide/cost/, /guide/grade/, /guide/choose/, /guide/admission/, /guide/vs-hospital/, /guide/namyangju/, /#calculator, 이전 인사이트(/insight/<slug>/)를 자연스럽게 1~3개.
