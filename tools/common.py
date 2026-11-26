@@ -30,9 +30,9 @@ GUIDES=[
 def header():
     return '''<header>
   <div class="wrap nav">
-    <a class="logo" href="/" aria-label="은행나무실버케어 홈">
+    <a class="logo" href="/" aria-label="은행나무요양원 홈">
       <svg viewBox="0 0 100 100" aria-hidden="true"><g transform="rotate(-26 50 56)"><path d="M50 64C43 55 25 43 7 34C11 24 21 16 33 13C37 12 41 13 44 12C46 11.5 48 13 49.5 16C50.5 13 52 11.5 55 12C59 13 62 12 67 13C79 16 89 24 93 34C75 43 57 55 50 64Z" fill="#CFA53A" stroke="#EFD58A" stroke-width="2" stroke-linejoin="round"/><path d="M50 64C50.5 73 54 83 61 91" fill="none" stroke="#CFA53A" stroke-width="3" stroke-linecap="round"/><path d="M50 62L28 26M50 62L42 18M50 62L58 18M50 62L72 26" stroke="#B88F27" stroke-width=".9" opacity=".55"/></g></svg>
-      은행나무실버케어
+      은행나무요양원
     </a>
     <nav class="menu" aria-label="주요 메뉴">
       <a href="/#about">소개</a><a href="/#who">상황별 안내</a><a href="/guide/">이용 가이드</a><a href="/insight/">인사이트</a><a href="/#calculator">비용 계산기</a><a href="/#location">오시는 길</a><a class="menu-build" href="/#franchise">토르건축 상담</a>
@@ -57,11 +57,11 @@ def footer():
     links=" · ".join(f'<a href="/guide/{s}/">{t}</a>' for s,t,_ in GUIDES)
     return f'''<footer>
   <div class="wrap">
-    <p><b>은행나무실버케어</b> · 노인요양시설 · 정원 49명 (2027년 1월 준공 예정)</p>
+    <p><b>은행나무요양원</b> · 노인요양시설 · 정원 49명 (2027년 1월 준공 예정)</p>
     <p>경기도 남양주시 화도읍 가곡로 97-22 (가곡리 256-9, 우 12032) · 입소상담 {TEL1} (원장 박민경)</p>
     <p><a href="/build/">건축 일지</a> · 토르건축 · 요양원 개원·건축·가맹 문의 {TEL2} · <a href="https://thorthor.co.kr/general-construction" target="_blank" rel="noopener">토르건축 홈페이지</a></p>
     <p style="margin-top:var(--s3)" class="flinks">{links}</p>
-    <p style="margin-top:var(--s3)">© 2026 은행나무실버케어. All rights reserved. · bankwood.co.kr</p>
+    <p style="margin-top:var(--s3)">© 2026 은행나무요양원. All rights reserved. · bankwood.co.kr</p>
   </div>
 </footer>
 <div class="mcall"><a href="tel:010-2109-7717">📞 사전 상담하기</a><a href="/#location">오시는 길</a></div>'''
@@ -84,7 +84,7 @@ def head(title,desc,path,og_title=None,extra_ld=None,kw=""):
 <meta name="naver-site-verification" content="NAVER_CODE">
 <meta name="msvalidate.01" content="D049D2BE3DCEA10800B6C8A47C4CADBF">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="은행나무실버케어">
+<meta property="og:site_name" content="은행나무요양원">
 <meta property="og:title" content="{og_title or title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">

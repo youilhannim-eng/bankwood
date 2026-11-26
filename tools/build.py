@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import *
 from guides import PAGES
 ROOT=os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
-ORG={"@type":["NursingHome","LocalBusiness"],"@id":SITE+"/#org","name":"은행나무실버케어","url":SITE+"/","telephone":"+82-10-2109-7717",
+ORG={"@type":["NursingHome","LocalBusiness"],"@id":SITE+"/#org","name":"은행나무요양원","url":SITE+"/","telephone":"+82-10-2109-7717",
  "image":SITE+"/assets/og-image.jpg","logo":{"@type":"ImageObject","url":SITE+"/assets/og-image.jpg"},
  "address":{"@type":"PostalAddress","streetAddress":"화도읍 가곡로 97-22 (가곡리 256-9)","addressLocality":"남양주시","addressRegion":"경기도","postalCode":"12032","addressCountry":"KR"},
  "areaServed":["남양주시","구리시","하남시","서울특별시"]}
@@ -46,7 +46,7 @@ def related_html(items,title="함께 보면 좋은 글"):
     return f'<section class="related"><div class="wrap"><h2>{title}</h2><div class="rel-grid">'+"".join(f'<a href="{u}"><b>{esc(t)}</b><span>{esc(d)}</span></a>' for t,d,u in items)+'</div></div></section>'
 
 def page(headhtml,body):
-    return headhtml+header()+'\n<main id="main">\n'+body+'\n</main>\n'+footer()+'\n<script defer src="/assets/fx.js" data-theme="ginkgo" data-tel="010-2109-7717" data-brand="은행나무실버케어"></script>\n</body>\n</html>\n'
+    return headhtml+header()+'\n<main id="main">\n'+body+'\n</main>\n'+footer()+'\n<script defer src="/assets/fx.js" data-theme="ginkgo" data-tel="010-2109-7717" data-brand="은행나무요양원"></script>\n</body>\n</html>\n'
 
 # ── 안내 페이지
 def render_guide(slug,p):
@@ -63,7 +63,7 @@ def render_guide(slug,p):
     mine=[d for d in POSTS if d.get("guide")==slug][:6]
     ins=related_html([(d["title"],d["date"],f"/insight/{d['slug']}/") for d in mine],"이 주제의 인사이트") if mine else ""
     body=f'''{crumbs(bc)}
-<section class="page-hero" style="padding-top:0"><div class="wrap"><h1>{esc(p["h1"])}</h1><p class="lead">{esc(p["lead"])}</p><p class="meta">은행나무실버케어 · 최종 확인 {TODAY}</p></div></section>
+<section class="page-hero" style="padding-top:0"><div class="wrap"><h1>{esc(p["h1"])}</h1><p class="lead">{esc(p["lead"])}</p><p class="meta">은행나무요양원 · 최종 확인 {TODAY}</p></div></section>
 <div class="page-body"><div class="wrap page-grid"><article class="prose">{secs}{faq_html(p["faqs"])}{srcs}</article><aside class="side">{toc(p["secs"])}{SIDECTA}</aside></div></div>
 {ins}{related_html(rel)}'''
     W(f"guide{path[6:]}index.html",page(h,body))
@@ -71,8 +71,8 @@ def render_guide(slug,p):
 def render_build():
     data=json.load(open(os.path.join(ROOT,"content","build.json"),encoding="utf-8"))
     path="/build/"; bc=[("홈","/"),("건축 일지",path)]
-    title="요양원 건축 일지 | 부지부터 준공·개원까지 - 토르건축 · 은행나무실버케어"
-    desc="은행나무실버케어를 짓는 과정을 부지 검토, 설계, 착공, 골조, 마감, 준공, 개원 순서로 기록합니다. 요양원 개원·건축·브랜딩 상담은 토르건축이 맡습니다."
+    title="요양원 건축 일지 | 부지부터 준공·개원까지 - 토르건축 · 은행나무요양원"
+    desc="은행나무요양원을 짓는 과정을 부지 검토, 설계, 착공, 골조, 마감, 준공, 개원 순서로 기록합니다. 요양원 개원·건축·브랜딩 상담은 토르건축이 맡습니다."
     n=sum(len(s["photos"]) for s in data["stages"])
     items=""
     for i,s in enumerate(data["stages"],1):
@@ -83,7 +83,7 @@ def render_build():
     ld=[art_ld("요양원 건축 일지",desc,path,"2026-11-22",TODAY),bc_ld(bc)]
     h=head(title,esc(desc),path,extra_ld=ld,kw="요양원 건축, 요양원 신축, 요양원 개원, 요양원 브랜딩, 요양원 창업, 토르건축")
     body=f'''{crumbs(bc)}
-<section class="page-hero" style="padding-top:0"><div class="wrap"><span class="eyebrow">토르건축 · 은행나무실버케어</span><h1>요양원 한 채가 지어지기까지</h1><p class="lead">남양주 화도읍에 짓고 있는 은행나무실버케어의 건축 과정을 단계별로 기록합니다. 사진은 공사가 진행되는 대로 올립니다.</p><p class="meta">정원 49명 · 2027년 1월 준공 예정 · 최종 확인 {TODAY}</p></div></section>
+<section class="page-hero" style="padding-top:0"><div class="wrap"><span class="eyebrow">토르건축 · 은행나무요양원</span><h1>요양원 한 채가 지어지기까지</h1><p class="lead">남양주 화도읍에 짓고 있는 은행나무요양원의 건축 과정을 단계별로 기록합니다. 사진은 공사가 진행되는 대로 올립니다.</p><p class="meta">정원 49명 · 2027년 1월 준공 예정 · 최종 확인 {TODAY}</p></div></section>
 <div class="page-body"><div class="wrap"><ol class="bl">{items}</ol>
 <div class="bl-cta"><div><h2>요양원 개원을 준비하고 계신가요</h2><p>부지 검토부터 설계·시공, 설치신고와 지정 준비, 이름과 브랜드까지 토르건축이 상담합니다.</p></div><div class="btns"><a class="btn p" href="tel:010-2225-6775">토르건축 상담 010-2225-6775</a><a class="btn s" href="/guide/open-nursing-home/">개원 절차 보기</a><a class="btn s" href="https://thorthor.co.kr/general-construction" target="_blank" rel="noopener">토르건축 홈페이지 ↗</a></div></div>
 </div></div>'''
@@ -93,7 +93,7 @@ def render_hub():
     path="/guide/"; bc=[("홈","/"),("이용 가이드",path)]
     cards="".join(f'<a class="guide-card" href="/guide/{s}/"><b>{t}</b><span>{d}</span><em>자세히 보기 →</em></a>' for s,t,d in GUIDES)
     ld=[{"@type":"CollectionPage","name":"요양원 이용 가이드","url":SITE+path,"inLanguage":"ko-KR","publisher":ORG,"about":{"@id":SITE+"/#org"}},bc_ld(bc)]
-    h=head("요양원 이용 가이드 | 비용·등급 신청·입소 절차·고르는 법 - 은행나무실버케어","요양원 비용과 본인부담금, 장기요양등급 신청, 입소 절차와 준비물, 요양원 고르는 법, 요양원·요양병원 차이를 쉽게 정리한 이용 가이드.",path,extra_ld=ld,kw="요양원 가이드, 요양원 비용, 장기요양등급 신청, 요양원 입소 절차, 서울근교 요양원")
+    h=head("요양원 이용 가이드 | 비용·등급 신청·입소 절차·고르는 법 - 은행나무요양원","요양원 비용과 본인부담금, 장기요양등급 신청, 입소 절차와 준비물, 요양원 고르는 법, 요양원·요양병원 차이를 쉽게 정리한 이용 가이드.",path,extra_ld=ld,kw="요양원 가이드, 요양원 비용, 장기요양등급 신청, 요양원 입소 절차, 서울근교 요양원")
     body=f'''{crumbs(bc)}
 <section class="page-hero" style="padding-top:0"><div class="wrap"><h1>요양원 이용 가이드</h1><p class="lead">처음 요양원을 알아보는 가족을 위해 비용, 등급 신청, 입소 준비, 고르는 법을 순서대로 정리했습니다.</p></div></section>
 <div class="page-body"><div class="wrap"><div class="grid-guides">{cards}</div>
@@ -147,10 +147,10 @@ def render_post(d,posts):
     rel+= [(gtitle(s),gsub(s),f"/guide/{s}/") for s in ("cost","grade","choose")][:max(0,3-len(rel))]
     faqs=[(f["q"],f["a"]) for f in d["faq"]]
     ld=[art_ld(d["title"],d["description"],path,d["date"],d.get("modified",d["date"])),bc_ld(bc),faq_ld(faqs)]
-    h=head(f'{d["title"]} - 은행나무실버케어 인사이트',esc(d["description"]),path,extra_ld=ld,kw=", ".join(d.get("keywords",[d["category"]])))
-    cta=f'<div class="callout"><p>요양원 입소와 등급 신청이 궁금하시면 편하게 문의하세요. 원장 박민경 <a href="tel:{TEL1}" style="white-space:nowrap">{TEL1}</a> · 은행나무실버케어는 2027년 1월 준공 예정이며 사전 입소상담을 받고 있습니다.</p></div>'
+    h=head(f'{d["title"]} - 은행나무요양원 인사이트',esc(d["description"]),path,extra_ld=ld,kw=", ".join(d.get("keywords",[d["category"]])))
+    cta=f'<div class="callout"><p>요양원 입소와 등급 신청이 궁금하시면 편하게 문의하세요. 원장 박민경 <a href="tel:{TEL1}" style="white-space:nowrap">{TEL1}</a> · 은행나무요양원은 2027년 1월 준공 예정이며 사전 입소상담을 받고 있습니다.</p></div>'
     body=f'''{crumbs(bc)}
-<section class="page-hero" style="padding-top:0"><div class="wrap"><span class="eyebrow">{esc(d["category"])}</span><h1>{esc(d["title"])}</h1><p class="meta">{d["date"]} · 은행나무실버케어 인사이트</p></div></section>
+<section class="page-hero" style="padding-top:0"><div class="wrap"><span class="eyebrow">{esc(d["category"])}</span><h1>{esc(d["title"])}</h1><p class="meta">{d["date"]} · 은행나무요양원 인사이트</p></div></section>
 <div class="page-body"><div class="wrap page-grid"><article class="prose"><div class="callout"><b>핵심 요약</b><ul style="margin:.382rem 0 0 1.272rem">{summ}</ul></div>{wrap_tables(body_h)}{faq_html(faqs)}{srcs}{cta}</article><aside class="side">{toc(secs)}{SIDECTA}</aside></div></div>
 {related_html(rel)}'''
     W(f"insight/{d['slug']}/index.html",page(h,body))
@@ -167,9 +167,9 @@ def render_insight_index(posts):
     cards=chips+f'<section class="cat-sec" id="latest"><h2>최신 글</h2><div class="grid-guides">{"".join(card(d) for d in posts[:3])}</div></section>'
     cards+="".join(f'<section class="cat-sec" id="cat-{n}"><h2>{esc(c)} <i>{len(by[c])}편</i></h2><div class="grid-guides">{"".join(card(d,False) for d in by[c])}</div></section>' for n,c in enumerate(cats,1))
     if not posts: cards="<p>곧 첫 글이 올라옵니다.</p>"
-    ld=[{"@type":"Blog","name":"은행나무실버케어 인사이트","url":SITE+path,"inLanguage":"ko-KR","publisher":ORG,
+    ld=[{"@type":"Blog","name":"은행나무요양원 인사이트","url":SITE+path,"inLanguage":"ko-KR","publisher":ORG,
          "blogPost":[{"@type":"BlogPosting","headline":d["title"],"url":SITE+f"/insight/{d['slug']}/","datePublished":d["date"]} for d in posts[:20]]},bc_ld(bc)]
-    h=head("인사이트 | 요양원 선택·비용·등급·돌봄 정보 매일 업데이트 - 은행나무실버케어","요양원 선택, 비용과 제도, 장기요양등급, 치매 돌봄 정보를 하루 한 편씩 정리하는 은행나무실버케어 인사이트.",path,extra_ld=ld,kw="요양원 정보, 요양원 비용, 장기요양등급, 치매 돌봄, 서울근교 요양원")
+    h=head("인사이트 | 요양원 선택·비용·등급·돌봄 정보 매일 업데이트 - 은행나무요양원","요양원 선택, 비용과 제도, 장기요양등급, 치매 돌봄 정보를 하루 한 편씩 정리하는 은행나무요양원 인사이트.",path,extra_ld=ld,kw="요양원 정보, 요양원 비용, 장기요양등급, 치매 돌봄, 서울근교 요양원")
     body=f'''{crumbs(bc)}
 <section class="page-hero" style="padding-top:0"><div class="wrap"><h1>인사이트</h1><p class="lead">요양원을 알아보는 가족에게 도움이 되는 정보를 하루 한 편씩 정리합니다. 제도와 금액은 공식 자료를 확인해 적습니다.</p><p class="meta"><a href="/rss.xml" style="text-decoration:underline">RSS 구독</a></p></div></section>
 <div class="page-body"><div class="wrap">{cards}</div></div>'''
@@ -191,9 +191,9 @@ def write_feeds(posts):
     x='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"<url><loc>{SITE}{u}</loc><lastmod>{m}</lastmod><priority>{pr}</priority></url>\n" for u,m,pr in urls)+"</urlset>\n"
     W("sitemap.xml",x)
     items="".join(f'<item><title>{esc(d["title"])}</title><link>{SITE}/insight/{d["slug"]}/</link><guid>{SITE}/insight/{d["slug"]}/</guid><pubDate>{datetime.strptime(d["date"],"%Y-%m-%d").strftime("%a, %d %b %Y 07:00:00 +0900")}</pubDate><description>{esc(d["description"])}</description></item>\n' for d in posts[:30])
-    W("rss.xml",f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>은행나무실버케어 인사이트</title><link>{SITE}/insight/</link><description>요양원 선택·비용·등급·돌봄 정보</description><language>ko-KR</language>\n{items}</channel></rss>\n')
+    W("rss.xml",f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>은행나무요양원 인사이트</title><link>{SITE}/insight/</link><description>요양원 선택·비용·등급·돌봄 정보</description><language>ko-KR</language>\n{items}</channel></rss>\n')
     head_p=os.path.join(ROOT,"tools/llms_head.txt")
-    base=open(head_p,encoding="utf-8").read() if os.path.exists(head_p) else "# 은행나무실버케어\n"
+    base=open(head_p,encoding="utf-8").read() if os.path.exists(head_p) else "# 은행나무요양원\n"
     ll=base.rstrip()+"\n\n## 이용 가이드\n"+"".join(f"- [{t}]({SITE}/guide/{s}/): {d}\n" for s,t,d in GUIDES)
     if posts: ll+="\n## 인사이트 (최신순)\n"+"".join(f"- [{d['title']}]({SITE}/insight/{d['slug']}/): {d['description']}\n" for d in posts[:50])
     W("llms.txt",ll)
