@@ -1,12 +1,11 @@
 # 인사이트 키워드 대기열
 
-대기 59 · 완료 24 · 보류 17
+대기 57 · 완료 26 · 보류 17
 
 ## 대기 (위에서부터 한 편씩)
 
 | 키워드 | 월 검색량 | 붙일 안내 페이지 |
 |---|---|---|
-| 노인요양시설 | 840 | ltc-insurance |
 | 장기요양4등급 | 700 | grade-compare |
 | 장기요양인정신청 | 550 | grade |
 | 장기요양5등급 | 550 | grade-compare |
@@ -24,7 +23,6 @@
 | 구리요양원 | 280 | near-seoul |
 | 진접요양원 | 260 | namyangju-areas |
 | 중랑구요양원 | 260 | nowon-jungnang |
-| 요양시설 | 240 | ltc-insurance |
 | 경기도요양원 | 230 | near-seoul |
 | 장기요양1등급 | 200 | grade-compare |
 | 요양원추천 | 200 | choose |
@@ -92,8 +90,10 @@
 | 인지지원등급 | 1,000 | dementia-grade-assessment-prep |
 | 남양주요양원 | 900 | namyangju-nursing-home-local-windows |
 | 강동구요양원 | 900 | gangdong-gu-care-programs-nursing-home |
+| 노인요양시설 | 840 | nursing-facility-first-month-documents |
 | 요양원입소 | 320 | before-admission-family-talk |
 | 장기요양등급판정 | 260 | ltc-score-how-calculated |
+| 요양시설 | 240 | nursing-facility-first-month-documents |
 
 ## 보류 (다른 지역·과장 표현·금액 확정 전)
 
