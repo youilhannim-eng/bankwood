@@ -63,7 +63,9 @@
     function stop(){run=false;cancelAnimationFrame(raf)}
     size(); seed();
     var rt; addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){var w=W;size();if(Math.abs(w-W)>40)seed()},180)});
-    if("IntersectionObserver" in window) new IntersectionObserver(function(e){e[0].isIntersecting&&!document.hidden?start():stop()}).observe(hero); else start();
+    function boot(){ if("IntersectionObserver" in window) new IntersectionObserver(function(e){e[0].isIntersecting&&!document.hidden?start():stop()}).observe(hero); else start(); }
+    /* 첫 화면 사진이 다 뜬 뒤에 잎이 떨어지게(모바일 속도) */
+    if(document.readyState==="complete") setTimeout(boot,1200); else addEventListener("load",function(){setTimeout(boot,1200)});
     document.addEventListener("visibilitychange",function(){document.hidden?stop():(hero.getBoundingClientRect().bottom>0&&start())});
   }
 
